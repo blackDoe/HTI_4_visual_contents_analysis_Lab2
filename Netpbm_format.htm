@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Netpbm format - Wikipedia</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Netpbm_format","wgTitle":"Netpbm format","wgCurRevisionId":779414988,"wgRevisionId":779414988,"wgArticleId":69770,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["CS1 errors: dates","CS1 maint: Uses authors parameter","All articles with unsourced statements","Articles with unsourced statements from February 2014","Graphics file formats"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Netpbm_format","wgRelevantArticleId":69770,"wgRequestId":"WSUYUApAME0AALlA-IQAAABH","wgIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgFlaggedRevsParams":{"tags":{}},"wgStableRevisionId":null,"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"preview":false,"publish":false},"wgBetaFeaturesFeatures":[],"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":false,"wgPopupsShouldSendModuleToUser":false,"wgPopupsConflictsWithNavPopupGadget":false,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","usePageImages":true,"usePageDescriptions":true},"wgPreferredVariant":"en","wgMFDisplayWikibaseDescriptions":{"search":true,"nearby":true,"watchlist":true,"tagline":false},"wgRelatedArticles":null,"wgRelatedArticlesUseCirrusSearch":true,"wgRelatedArticlesOnlyUseCirrusSearch":false,"wgULSCurrentAutonym":"English","wgNoticeProject":"wikipedia","wgCentralNoticeCookiesToDelete":[],"wgCentralNoticeCategoriesUsingLegacy":["Fundraising","fundraising"],"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","wgWikibaseItemId":"Q17154458","wgCentralAuthMobileDomain":false,"wgVisualEditorToolbarScrollOffset":0,"wgVisualEditorUnsupportedEditParams":["preload","preloadparams","preloadtitle","undo","undoafter","veswitched"],"wgEditSubmitButtonLabelPublish":false});mw.loader.state({"ext.globalCssJs.user.styles":"ready","ext.globalCssJs.site.styles":"ready","site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","wikibase.client.init":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.uls.interlanguage":"ready","ext.wikimediaBadges":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","mediawiki.skinning.interface":"ready","skins.vector.styles":"ready","ext.globalCssJs.user":"ready","ext.globalCssJs.site":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1dqfd7l",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["ext.cite.a11y","mediawiki.toc","site","mediawiki.page.startup","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.gadget.teahouse","ext.gadget.ReferenceTooltips","ext.gadget.watchlist-notice","ext.gadget.DRN-wizard","ext.gadget.charinsert","ext.gadget.refToolbar","ext.gadget.extra-toolbar-buttons","ext.gadget.switcher","ext.gadget.featured-articles-links","ext.centralauth.centralautologin","mmv.head","mmv.bootstrap.autostart","ext.visualEditor.desktopArticleTarget.init","ext.visualEditor.targetLoader","ext.eventLogging.subscriber","ext.wikimediaEvents","ext.navigationTiming","ext.uls.eventlogger","ext.uls.init","ext.uls.interface","ext.quicksurveys.init","ext.centralNotice.geoIP","ext.centralNotice.startUp","skins.vector.js"]);});</script>
+<link rel="stylesheet" href="/w/load.php?debug=false&amp;lang=en&amp;modules=ext.cite.styles%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediaBadges%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.interface%7Cskins.vector.styles%7Cwikibase.client.init&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/w/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?debug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.30.0-wmf.1"/>
+<meta name="referrer" content="origin-when-cross-origin"/>
+<link rel="alternate" href="android-app://org.wikipedia/http/en.m.wikipedia.org/wiki/Netpbm_format"/>
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Netpbm_format&amp;action=edit"/>
+<link rel="edit" title="Edit this page" href="/w/index.php?title=Netpbm_format&amp;action=edit"/>
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png"/>
+<link rel="shortcut icon" href="/static/favicon/wikipedia.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd"/>
+<link rel="copyright" href="//creativecommons.org/licenses/by-sa/3.0/"/>
+<link rel="canonical" href="https://en.wikipedia.org/wiki/Netpbm_format"/>
+<link rel="dns-prefetch" href="//login.wikimedia.org"/>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Netpbm_format rootpage-Netpbm_format skin-vector action-view">		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+							<div id="siteNotice" class="mw-body-content"><!-- CentralNotice --></div>
+						<div class="mw-indicators mw-body-content">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">Netpbm format</h1>
+									<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From Wikipedia, the free encyclopedia</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-head">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" style="width:22em">
+<caption style="font-size:130%; padding-bottom:0.15em;">Portable pixmap</caption>
+<tr>
+<th scope="row" style="padding:0.2em 0;line-height:1.2em; padding-right:0.65em;"><a href="/wiki/Filename_extension" title="Filename extension">Filename extension</a></th>
+<td style="line-height:1.35em;"><code><tt>.pbm</tt>, <tt>.pgm</tt>, <tt>.ppm</tt>, <tt>.pnm</tt></code></td>
+</tr>
+<tr>
+<th scope="row" style="padding:0.2em 0;line-height:1.2em; padding-right:0.65em;"><a href="/wiki/Media_type" title="Media type">Internet media&#160;type</a></th>
+<td style="line-height:1.35em;"><code>image/x‑portable‑bitmap,<sup id="cite_ref-P1_1-0" class="reference"><a href="#cite_note-P1-1">[1]</a></sup> image/x‑portable‑graymap,<sup id="cite_ref-P2_2-0" class="reference"><a href="#cite_note-P2-2">[2]</a></sup> image/x‑portable‑pixmap,<sup id="cite_ref-P3_3-0" class="reference"><a href="#cite_note-P3-3">[3]</a></sup> image/x‑portable‑anymap<sup id="cite_ref-Pn_4-0" class="reference"><a href="#cite_note-Pn-4">[4]</a></sup></code></td>
+</tr>
+<tr>
+<th scope="row" style="padding:0.2em 0;line-height:1.2em; padding-right:0.65em;">Developed&#160;by</th>
+<td style="line-height:1.35em;"><a href="/wiki/Jef_Poskanzer" title="Jef Poskanzer">Jef Poskanzer</a></td>
+</tr>
+<tr>
+<th scope="row" style="padding:0.2em 0;line-height:1.2em; padding-right:0.65em;">Type of format</th>
+<td style="line-height:1.35em;"><a href="/wiki/Image_file_formats" title="Image file formats">Image file formats</a></td>
+</tr>
+<tr>
+<th scope="row" style="padding:0.2em 0;line-height:1.2em; padding-right:0.65em;">Extended&#160;to</th>
+<td style="line-height:1.35em;"><a href="/wiki/Netpbm#PAM_graphics_format" title="Netpbm">Portable&#160;Arbitrary&#160;Map&#160;(PAM)</a></td>
+</tr>
+<tr>
+<th scope="row" style="padding:0.2em 0;line-height:1.2em; padding-right:0.65em;"><span class="nowrap"><a href="/wiki/Open_format" title="Open format">Open format</a>?</span></th>
+<td style="line-height:1.35em;">yes</td>
+</tr>
+</table>
+<p>A <b>Netpbm format</b> is any graphics format used and defined by the <a href="/wiki/Netpbm" title="Netpbm">Netpbm</a> project. The <b>portable pixmap format</b> (<b>PPM</b>), the <b>portable graymap format</b> (<b>PGM</b>) and the <b>portable bitmap format</b> (<b>PBM</b>) are <a href="/wiki/Image_file_formats" title="Image file formats">image file formats</a> designed to be easily exchanged between platforms. They are also sometimes referred to collectively as the <b>portable anymap format</b> (<b>PNM</b>),<sup id="cite_ref-Pn_4-1" class="reference"><a href="#cite_note-Pn-4">[4]</a></sup><sup id="cite_ref-book_5-0" class="reference"><a href="#cite_note-book-5">[5]</a></sup> not to be confused with the related <a href="/wiki/Netpbm#PAM_graphics_format" title="Netpbm">portable arbitrary map format</a>.</p>
+<p></p>
+<div id="toc" class="toc">
+<div id="toctitle" class="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#History"><span class="tocnumber">1</span> <span class="toctext">History</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#File_format_description"><span class="tocnumber">2</span> <span class="toctext">File format description</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#PBM_example"><span class="tocnumber">2.1</span> <span class="toctext">PBM example</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#PGM_example"><span class="tocnumber">2.2</span> <span class="toctext">PGM example</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#PPM_example"><span class="tocnumber">2.3</span> <span class="toctext">PPM example</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="#16-bit_extensions"><span class="tocnumber">3</span> <span class="toctext">16-bit extensions</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#See_also"><span class="tocnumber">4</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#References"><span class="tocnumber">5</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#External_links"><span class="tocnumber">6</span> <span class="toctext">External links</span></a></li>
+</ul>
+</div>
+<p></p>
+<h2><span class="mw-headline" id="History">History</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Netpbm_format&amp;action=edit&amp;section=1" title="Edit section: History">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The PBM format was invented by <a href="/wiki/Jef_Poskanzer" title="Jef Poskanzer">Jef Poskanzer</a> in the 1980s as a format that allowed monochrome bitmaps to be transmitted within an email message as plain ASCII text, allowing it to survive any changes in text formatting.<sup id="cite_ref-book_5-1" class="reference"><a href="#cite_note-book-5">[5]</a></sup> Poskanzer developed the first library of tools to handle the PBM format, Pbmplus, released in 1988. It mainly contained tools to convert between PBM and other graphics formats. By the end of 1988, Poskanzer had developed the PGM and PPM formats along with their associated tools and added them to Pbmplus. The final release of Pbmplus was December 10, 1991.</p>
+<p>In 1993, the <a href="/wiki/Netpbm" title="Netpbm">Netpbm</a> library was developed to replace the unmaintained Pbmplus. It was simply a repackaging of Pbmplus with additions and fixes submitted by people all over the world.<sup id="cite_ref-6" class="reference"><a href="#cite_note-6">[6]</a></sup></p>
+<h2><span class="mw-headline" id="File_format_description">File format description</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Netpbm_format&amp;action=edit&amp;section=2" title="Edit section: File format description">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Each file starts with a two-byte <a href="/wiki/Magic_number_(programming)" title="Magic number (programming)">magic number</a> (in ASCII) that identifies the type of file it is (PBM, PGM, and PPM) and its encoding (<a href="/wiki/ASCII" title="ASCII">ASCII</a> or binary). The magic number is a capital P followed by a single-digit number.</p>
+<table class="wikitable">
+<tr>
+<th colspan="2">Type</th>
+<th colspan="2">Magic number</th>
+<th colspan="2">Magic number</th>
+<th>Extension</th>
+<th>Colors</th>
+</tr>
+<tr>
+<td>Portable BitMap</td>
+<td><sup id="cite_ref-P1_1-1" class="reference"><a href="#cite_note-P1-1">[1]</a></sup></td>
+<td><code>P1</code></td>
+<td>ASCII</td>
+<td><code>P4</code></td>
+<td>binary</td>
+<td><code>.pbm</code></td>
+<td>0–1 (white &amp; black)</td>
+</tr>
+<tr>
+<td>Portable GrayMap</td>
+<td><sup id="cite_ref-P2_2-1" class="reference"><a href="#cite_note-P2-2">[2]</a></sup></td>
+<td><code>P2</code></td>
+<td>ASCII</td>
+<td><code>P5</code></td>
+<td>binary</td>
+<td><code>.pgm</code></td>
+<td>0–255 (gray scale)</td>
+</tr>
+<tr>
+<td>Portable PixMap</td>
+<td><sup id="cite_ref-P3_3-1" class="reference"><a href="#cite_note-P3-3">[3]</a></sup></td>
+<td><code>P3</code></td>
+<td>ASCII</td>
+<td><code>P6</code></td>
+<td>binary</td>
+<td><code>.ppm</code></td>
+<td>0–255 (RGB)</td>
+</tr>
+</table>
+<p>A value of <code>P7</code> refers to the <a href="/wiki/Netpbm#PAM_graphics_format" title="Netpbm">PAM</a> file format that is covered as well by the <a href="/wiki/Netpbm" title="Netpbm">netpbm</a> library.<sup id="cite_ref-7" class="reference"><a href="#cite_note-7">[7]</a></sup></p>
+<p>The ASCII formats allow for human readability and easy transfer to other platforms; the binary formats are more efficient in file size but may have native byte-order issues.</p>
+<p>In the binary formats, PBM uses 1 bit per pixel, PGM uses 8 bits per pixel, and PPM uses 24 bits per pixel: 8 for red, 8 for green, 8 for blue.</p>
+<h3><span class="mw-headline" id="PBM_example">PBM example</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Netpbm_format&amp;action=edit&amp;section=3" title="Edit section: PBM example">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>A simple example of the PBM format is as follows (there is a newline character at the end of each line):</p>
+<pre>
+P1
+# This is an example bitmap of the letter "J"
+6 10
+0 0 0 0 1 0
+0 0 0 0 1 0
+0 0 0 0 1 0
+0 0 0 0 1 0
+0 0 0 0 1 0
+0 0 0 0 1 0
+1 0 0 0 1 0
+0 1 1 1 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+</pre>
+<p>The string <i>P1</i> identifies the file format. The hash sign introduces a comment. The next two numbers give the width and the height. Then follows the matrix with the pixel values (in the monochrome case here, only zeros and ones).</p>
+<p>Here is the resulting image: <a href="/wiki/File:Example_of_ASCII-art_turned_into_a_bitmap.pbm.png" class="image"><img alt="Example of ASCII-art turned into a bitmap.pbm.png" src="//upload.wikimedia.org/wikipedia/commons/e/ec/Example_of_ASCII-art_turned_into_a_bitmap.pbm.png" width="6" height="10" data-file-width="6" data-file-height="10" /></a></p>
+<p>Here it is again magnified 20 times: <a href="/wiki/File:Example_of_ASCII-art_turned_into_a_bitmap_scale20.pbm.png" class="image"><img alt="Example of ASCII-art turned into a bitmap scale20.pbm.png" src="//upload.wikimedia.org/wikipedia/commons/a/ad/Example_of_ASCII-art_turned_into_a_bitmap_scale20.pbm.png" width="120" height="200" data-file-width="120" data-file-height="200" /></a></p>
+<p>Note that a 0 signifies a white pixel, and a 1 signifies a black pixel. This is in contrast to the other formats, where higher values signify brighter pixels.</p>
+<p>The P4 binary format of the same image represents each pixel with a single bit, packing 8 pixels per byte, with the first pixel as the most significant bit. Extra bits are added at the end of each row to fill a whole byte.</p>
+<h3><span class="mw-headline" id="PGM_example">PGM example</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Netpbm_format&amp;action=edit&amp;section=4" title="Edit section: PGM example">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The PGM and PPM formats (both ASCII and binary versions) have an additional parameter for the maximum value (numbers of grey between black and white) after the X and Y dimensions and before the actual pixel data. Black is 0 and max value is white. There is a newline character at the end of each line.</p>
+<div class="thumb tright">
+<div class="thumbinner" style="width:222px;"><a href="/wiki/File:Feep_netbpm_p2_pgm_example.png" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/8/81/Feep_netbpm_p2_pgm_example.png/220px-Feep_netbpm_p2_pgm_example.png" width="220" height="64" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/8/81/Feep_netbpm_p2_pgm_example.png/330px-Feep_netbpm_p2_pgm_example.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/8/81/Feep_netbpm_p2_pgm_example.png/440px-Feep_netbpm_p2_pgm_example.png 2x" data-file-width="600" data-file-height="175" /></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="/wiki/File:Feep_netbpm_p2_pgm_example.png" class="internal" title="Enlarge"></a></div>
+Example (magnified)</div>
+</div>
+</div>
+<pre>
+P2
+# Shows the word "FEEP" (example from Netpbm man page on PGM)
+24 7
+15
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+0  3  3  3  3  0  0  7  7  7  7  0  0 11 11 11 11  0  0 15 15 15 15  0
+0  3  0  0  0  0  0  7  0  0  0  0  0 11  0  0  0  0  0 15  0  0 15  0
+0  3  3  3  0  0  0  7  7  7  0  0  0 11 11 11  0  0  0 15 15 15 15  0
+0  3  0  0  0  0  0  7  0  0  0  0  0 11  0  0  0  0  0 15  0  0  0  0
+0  3  0  0  0  0  0  7  7  7  7  0  0 11 11 11 11  0  0 15  0  0  0  0
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+</pre>
+<h3><span class="mw-headline" id="PPM_example">PPM example</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Netpbm_format&amp;action=edit&amp;section=5" title="Edit section: PPM example">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>This is an example of a color RGB image stored in PPM format. There is a newline character at the end of each line.</p>
+<div class="thumb tright">
+<div class="thumbinner" style="width:122px;"><a href="/wiki/File:Tiny6pixel.png" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/57/Tiny6pixel.png/120px-Tiny6pixel.png" width="120" height="80" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/5/57/Tiny6pixel.png/180px-Tiny6pixel.png 1.5x, //upload.wikimedia.org/wikipedia/commons/5/57/Tiny6pixel.png 2x" data-file-width="192" data-file-height="128" /></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="/wiki/File:Tiny6pixel.png" class="internal" title="Enlarge"></a></div>
+Image (magnified)</div>
+</div>
+</div>
+<pre>
+P3
+3 2
+255
+# The part above is the header
+# "P3" means this is a RGB color image in ASCII
+# "3 2" is the width and height of the image in pixels
+# "255" is the maximum value for each color
+# The part below is image data: RGB triplets
+255   0   0     0 255   0     0   0 255
+255 255   0   255 255 255     0   0   0
+</pre>
+<p>The P6 binary format of the same image represents each color component of each pixel with one byte (thus three bytes per pixel) in the order red, green, then blue. The file is smaller, but the color information is difficult to read by humans.</p>
+<p>The PPM format is not compressed, and thus requires more space and bandwidth than a compressed format would. For example, the above 192×128 PNG (<a href="/wiki/Portable_Network_Graphics" title="Portable Network Graphics">Portable Network Graphics</a>) image has a file size of 166 bytes. When converted to a 192×128 PPM image, the file size is 73,848 bytes. The PPM format is generally an intermediate format used for image work before converting to a more efficient format, for example the PNG format, without any loss of information in the intermediate step.</p>
+<p>The image shown above using only <b>0</b> or the maximal value for the <b>r</b>ed-<b>g</b>reen-<b>b</b>lue channels can be also encoded as:</p>
+<pre>
+P3
+# The same image with width 3 and height 2,
+# using 0 or 1 per color (red, green, blue)
+3 2 1
+1 0 0   0 1 0   0 0 1
+1 1 0   1 1 1   0 0 0
+</pre>
+<p>White space including line ends and comment lines is syntactically equivalent to a single space within the PNM headers. For the plain formats P1…P3 this also affects the pixmap lines; in fact lines should be limited to 70 characters:</p>
+<pre>
+P3 3 2 1  1 0 0   0 1 0   0 0 1  1 1 0   1 1 1   0 0 0
+</pre>
+<h2><span class="mw-headline" id="16-bit_extensions">16-bit extensions</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Netpbm_format&amp;action=edit&amp;section=6" title="Edit section: 16-bit extensions">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The original definition of the PGM and the PPM binary formats (the P5 and P6 formats) did not allow bit depths greater than 8 bits. One can of course use the ASCII format, but this format both slows down reading and makes the files much larger. Accordingly, many programmers extended the format to allow higher bit depths. Using higher bit depths encounters the problem of having to decide on the <a href="/wiki/Endianness" title="Endianness">endianness</a> of the file. The various implementations could not agree on which byte order to use, and some connected the 16-bit endianness to the pixel packing order.<sup id="cite_ref-8" class="reference"><a href="#cite_note-8">[8]</a></sup> In <a href="/wiki/Netpbm" title="Netpbm">Netpbm</a>, the <i><a href="/wiki/De_facto" title="De facto">de facto</a></i> standard implementation of the PNM formats, the most significant byte is first.<sup id="cite_ref-9" class="reference"><a href="#cite_note-9">[9]</a></sup></p>
+<p>Common <a href="/wiki/RGB_color_model#Numeric_representations" title="RGB color model">RGB</a> <a href="/wiki/Color_depth#Deep_color_.2830.2F36.2F48-bit.29" title="Color depth">color depths</a> include 24 = (3 × 8), 30 = (3 × 10), 32 = (4 × 8), 36 = (3 × 12), 48 = (3 × 16), and 64 = (4 × 16) (with three <b>r</b>ed–<b>g</b>reen–<b>b</b>lue <a href="/wiki/Channel_(digital_image)" title="Channel (digital image)">channels</a>, and a fourth unused or <a href="/wiki/RGBA_color_space" title="RGBA color space">RGBA</a> <b>a</b>lpha channel, respectively). Classic <a href="/wiki/XnView" title="XnView">XnView</a> can read <i>rgb48be</i> PPM, <a href="/wiki/FFmpeg#PGMYUV" title="FFmpeg">FFmpeg</a> can also create <i>rgb48be</i> PPM.<sup id="cite_ref-10" class="reference"><a href="#cite_note-10">[10]</a></sup></p>
+<p>While 30 = (3 × 10) could fit into 32 bits, this is not supported by the binary PNM and <a href="/wiki/Netpbm#PAM_graphics_format" title="Netpbm">PAM</a> formats. All PPM bit depths with more than 8 bits are encoded in 64 bits. More than 8 gray bits end up as 16 bits without transparency (FFmpeg PGM or PAM pix_fmt <i>gray16be</i>).</p>
+<p><i>PGMYUV</i> is a PGM variant only used by <a href="/wiki/FFmpeg#PGMYUV" title="FFmpeg">FFmpeg</a>.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">[<i><a href="/wiki/Wikipedia:Citation_needed" title="Wikipedia:Citation needed"><span title="This claim needs references to reliable sources. (February 2014)">citation needed</span></a></i>]</sup></p>
+<h2><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Netpbm_format&amp;action=edit&amp;section=7" title="Edit section: See also">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a href="/wiki/Netpbm#PAM_graphics_format" title="Netpbm">PAM</a> (P7, portable arbitrary map)</li>
+<li><a href="/wiki/X_PixMap" title="X PixMap">X PixMap</a> (comparison of PBM and XPM)</li>
+</ul>
+<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Netpbm_format&amp;action=edit&amp;section=8" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="reflist columns references-column-count references-column-count-2" style="-moz-column-count: 2; -webkit-column-count: 2; column-count: 2; list-style-type: decimal;">
+<ol class="references">
+<li id="cite_note-P1-1"><span class="mw-cite-backlink">^ <a href="#cite_ref-P1_1-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-P1_1-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://netpbm.sourceforge.net/doc/pbm.html">.pbm</a> <a href="/wiki/MIME" title="MIME">MIME</a> type not <a rel="nofollow" class="external text" href="http://www.iana.org/assignments/media-types/media-types.xhtml#image">registered</a> at <a href="/wiki/Internet_Assigned_Numbers_Authority" title="Internet Assigned Numbers Authority">IANA</a></span></li>
+<li id="cite_note-P2-2"><span class="mw-cite-backlink">^ <a href="#cite_ref-P2_2-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-P2_2-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://netpbm.sourceforge.net/doc/pgm.html">.pgm</a> <a href="/wiki/MIME" title="MIME">MIME</a> type not <a rel="nofollow" class="external text" href="http://www.iana.org/assignments/media-types/media-types.xhtml#image">registered</a> at <a href="/wiki/Internet_Assigned_Numbers_Authority" title="Internet Assigned Numbers Authority">IANA</a></span></li>
+<li id="cite_note-P3-3"><span class="mw-cite-backlink">^ <a href="#cite_ref-P3_3-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-P3_3-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://netpbm.sourceforge.net/doc/ppm.html">.ppm</a> <a href="/wiki/MIME" title="MIME">MIME</a> type not <a rel="nofollow" class="external text" href="http://www.iana.org/assignments/media-types/media-types.xhtml#image">registered</a> at <a href="/wiki/Internet_Assigned_Numbers_Authority" title="Internet Assigned Numbers Authority">IANA</a></span></li>
+<li id="cite_note-Pn-4"><span class="mw-cite-backlink">^ <a href="#cite_ref-Pn_4-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-Pn_4-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://netpbm.sourceforge.net/doc/pnm.html">.pnm</a> <a href="/wiki/MIME" title="MIME">MIME</a> type not <a rel="nofollow" class="external text" href="http://www.iana.org/assignments/media-types/media-types.xhtml#image">registered</a> at <a href="/wiki/Internet_Assigned_Numbers_Authority" title="Internet Assigned Numbers Authority">IANA</a></span></li>
+<li id="cite_note-book-5"><span class="mw-cite-backlink">^ <a href="#cite_ref-book_5-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-book_5-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><cite class="citation web">James D. Murray, William vanRyper (1996-04). <a rel="nofollow" class="external text" href="http://www.fileformat.info/format/pbm/egff.htm">"Encyclopedia of Graphics File Formats, Second Edition"</a>. <a href="/wiki/O%27Reilly_Media" title="O'Reilly Media">O'Reilly</a>. <a href="/wiki/International_Standard_Book_Number" title="International Standard Book Number">ISBN</a>&#160;<a href="/wiki/Special:BookSources/1-56592-161-5" title="Special:BookSources/1-56592-161-5">1-56592-161-5</a><span class="reference-accessdate">. Retrieved <span class="nowrap">2014-02-27</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ANetpbm+format&amp;rft.btitle=Encyclopedia+of+Graphics+File+Formats%2C+Second+Edition&amp;rft.genre=unknown&amp;rft_id=http%3A%2F%2Fwww.fileformat.info%2Fformat%2Fpbm%2Fegff.htm&amp;rft.isbn=1-56592-161-5&amp;rft.pub=O%27Reilly&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span> <span style="font-size:100%" class="error citation-comment">Check date values in: <code style="color:inherit; border:inherit; padding:inherit;">|date=</code> (<a href="/wiki/Help:CS1_errors#bad_date" title="Help:CS1 errors">help</a>)</span><span class="citation-comment" style="display:none; color:#33aa33; margin-left:0.3em">CS1 maint: Uses authors parameter (<a href="/wiki/Category:CS1_maint:_Uses_authors_parameter" title="Category:CS1 maint: Uses authors parameter">link</a>)</span></span></li>
+<li id="cite_note-6"><span class="mw-cite-backlink"><b><a href="#cite_ref-6">^</a></b></span> <span class="reference-text"><cite class="citation web"><a rel="nofollow" class="external text" href="http://netpbm.sourceforge.net/history.html">"Netpbm history"</a><span class="reference-accessdate">. Retrieved <span class="nowrap">March 17,</span> 2010</span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ANetpbm+format&amp;rft.btitle=Netpbm+history&amp;rft.genre=unknown&amp;rft_id=http%3A%2F%2Fnetpbm.sourceforge.net%2Fhistory.html&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-7"><span class="mw-cite-backlink"><b><a href="#cite_ref-7">^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://netpbm.sourceforge.net/doc/pam.html#layout">Layout of the PAM file format</a>, netpbm documentation</span></li>
+<li id="cite_note-8"><span class="mw-cite-backlink"><b><a href="#cite_ref-8">^</a></b></span> <span class="reference-text"><cite class="citation web"><a rel="nofollow" class="external text" href="http://netpbm.sourceforge.net/doc/pnmtotiff.html">"Pnmtotiff User Manual"</a>. <i>netpbm doc at SourceForge</i>. 27 March 2005.</cite><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ANetpbm+format&amp;rft.atitle=Pnmtotiff+User+Manual&amp;rft.date=2005-03-27&amp;rft.genre=unknown&amp;rft_id=http%3A%2F%2Fnetpbm.sourceforge.net%2Fdoc%2Fpnmtotiff.html&amp;rft.jtitle=netpbm+doc+at+SourceForge&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-9"><span class="mw-cite-backlink"><b><a href="#cite_ref-9">^</a></b></span> <span class="reference-text"><cite class="citation web"><a rel="nofollow" class="external text" href="http://netpbm.sourceforge.net/doc/pamendian.html">"pamendian man page"</a>. <i>netpbm doc at SourceForge</i>. 10 October 2012.</cite><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ANetpbm+format&amp;rft.atitle=pamendian+man+page&amp;rft.date=2012-10-10&amp;rft.genre=unknown&amp;rft_id=http%3A%2F%2Fnetpbm.sourceforge.net%2Fdoc%2Fpamendian.html&amp;rft.jtitle=netpbm+doc+at+SourceForge&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-10"><span class="mw-cite-backlink"><b><a href="#cite_ref-10">^</a></b></span> <span class="reference-text"><cite class="citation web"><a rel="nofollow" class="external text" href="http://www.ffmpeg.org/general.html#Image-Formats">"Image Formats"</a>. <i><a href="/wiki/FFmpeg" title="FFmpeg">FFmpeg</a> General Documentation</i>. 2014<span class="reference-accessdate">. Retrieved <span class="nowrap">2014-02-23</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ANetpbm+format&amp;rft.atitle=Image+Formats&amp;rft.date=2014&amp;rft.genre=unknown&amp;rft_id=http%3A%2F%2Fwww.ffmpeg.org%2Fgeneral.html%23Image-Formats&amp;rft.jtitle=FFmpeg+General+Documentation&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+</ol>
+</div>
+<h2><span class="mw-headline" id="External_links">External links</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Netpbm_format&amp;action=edit&amp;section=9" title="Edit section: External links">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://people.sc.fsu.edu/~jburkardt/data/data.html">Examples of ppm files in various formats</a></li>
+</ul>
+<div role="navigation" class="navbox" aria-labelledby="Graphics_file_formats" style="padding:3px">
+<table class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit">
+<tr>
+<th scope="col" class="navbox-title" colspan="2">
+<div class="plainlinks hlist navbar mini">
+<ul>
+<li class="nv-view"><a href="/wiki/Template:Graphics_file_formats" title="Template:Graphics file formats"><abbr title="View this template" style=";;background:none transparent;border:none;">v</abbr></a></li>
+<li class="nv-talk"><a href="/wiki/Template_talk:Graphics_file_formats" title="Template talk:Graphics file formats"><abbr title="Discuss this template" style=";;background:none transparent;border:none;">t</abbr></a></li>
+<li class="nv-edit"><a class="external text" href="//en.wikipedia.org/w/index.php?title=Template:Graphics_file_formats&amp;action=edit"><abbr title="Edit this template" style=";;background:none transparent;border:none;">e</abbr></a></li>
+</ul>
+</div>
+<div id="Graphics_file_formats" style="font-size:114%;margin:0 4em"><a href="/wiki/Image_file_formats" title="Image file formats">Graphics file formats</a></div>
+</th>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Raster_graphics" title="Raster graphics">Raster</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/ANI_(file_format)" title="ANI (file format)">ANI</a></li>
+<li><a href="/wiki/ANIM" title="ANIM">ANIM</a></li>
+<li><a href="/wiki/APNG" title="APNG">APNG</a></li>
+<li><a href="/wiki/ART_image_file_format" title="ART image file format">ART</a></li>
+<li><a href="/wiki/BMP_file_format" title="BMP file format">BMP</a></li>
+<li><a href="/wiki/Better_Portable_Graphics" title="Better Portable Graphics">BPG</a></li>
+<li><a href="/wiki/BSAVE_(bitmap_format)" title="BSAVE (bitmap format)">BSAVE</a></li>
+<li><a href="/wiki/CALS_Raster_file_format" title="CALS Raster file format">CAL</a></li>
+<li><a href="/wiki/Cineon" title="Cineon">CIN</a></li>
+<li><a href="/wiki/Cartesian_Perceptual_Compression" title="Cartesian Perceptual Compression">CPC</a></li>
+<li><a href="/wiki/CPT_(file_format)" title="CPT (file format)">CPT</a></li>
+<li><a href="/wiki/DirectDraw_Surface" title="DirectDraw Surface">DDS</a></li>
+<li><a href="/wiki/Digital_Picture_Exchange" title="Digital Picture Exchange">DPX</a></li>
+<li><a href="/wiki/ECW_(file_format)" title="ECW (file format)">ECW</a></li>
+<li><a href="/wiki/OpenEXR" title="OpenEXR">EXR</a></li>
+<li><a href="/wiki/FITS" title="FITS">FITS</a></li>
+<li><a href="/wiki/FLIC_(file_format)" title="FLIC (file format)">FLIC</a></li>
+<li><a href="/wiki/Free_Lossless_Image_Format" title="Free Lossless Image Format">FLIF</a></li>
+<li><a href="/wiki/FlashPix" title="FlashPix">FPX</a></li>
+<li><a href="/wiki/GIF" title="GIF">GIF</a></li>
+<li><a href="/wiki/HDRi_(data_format)" class="mw-redirect" title="HDRi (data format)">HDRi</a></li>
+<li><a href="/wiki/High_Efficiency_Video_Coding#Main_Still_Picture" title="High Efficiency Video Coding">HEVC</a></li>
+<li><a href="/wiki/ICER" title="ICER">ICER</a></li>
+<li><a href="/wiki/Apple_Icon_Image_format" title="Apple Icon Image format">ICNS</a></li>
+<li><a href="/wiki/ICO_(file_format)" title="ICO (file format)">ICO / CUR</a></li>
+<li><a href="/wiki/Image_Cytometry_Standard" title="Image Cytometry Standard">ICS</a></li>
+<li><a href="/wiki/ILBM" title="ILBM">ILBM</a></li>
+<li><a href="/wiki/JBIG" title="JBIG">JBIG</a></li>
+<li><a href="/wiki/JBIG2" title="JBIG2">JBIG2</a></li>
+<li><a href="/wiki/JPEG_Network_Graphics" title="JPEG Network Graphics">JNG</a></li>
+<li><a href="/wiki/JPEG" title="JPEG">JPEG</a></li>
+<li><a href="/wiki/JPEG_2000" title="JPEG 2000">JPEG 2000</a></li>
+<li><a href="/wiki/Lossless_JPEG#JPEG-LS" title="Lossless JPEG">JPEG-LS</a></li>
+<li><a href="/wiki/JPEG_XR" title="JPEG XR">JPEG XR</a></li>
+<li><a href="/wiki/Krita" title="Krita">KRA</a></li>
+<li><a href="/wiki/Multiple-image_Network_Graphics" title="Multiple-image Network Graphics">MNG</a></li>
+<li><a href="/wiki/Magick_Image_File_Format" title="Magick Image File Format">MIFF</a></li>
+<li><a href="/wiki/Nearly_raw_raster_data" class="mw-redirect" title="Nearly raw raster data">NRRD</a></li>
+<li><a href="/wiki/OpenRaster" title="OpenRaster">ORA</a></li>
+<li><a href="/wiki/Netpbm#PAM_graphics_format" title="Netpbm">PAM</a></li>
+<li><a class="mw-selflink selflink">PBM / PGM / PPM / PNM</a></li>
+<li><a href="/wiki/PCX" title="PCX">PCX</a></li>
+<li><a href="/wiki/Progressive_Graphics_File" title="Progressive Graphics File">PGF</a></li>
+<li><a href="/wiki/PICtor_PIC_image_format" title="PICtor PIC image format">PICtor</a></li>
+<li><a href="/wiki/Portable_Network_Graphics" title="Portable Network Graphics">PNG</a></li>
+<li><a href="/wiki/Adobe_Photoshop#PSD" title="Adobe Photoshop">PSD / PSB</a></li>
+<li><a href="/wiki/PaintShop_Pro" title="PaintShop Pro">PSP</a></li>
+<li><a href="/wiki/QuickTime_VR" title="QuickTime VR">QTVR</a></li>
+<li><a href="/wiki/Sun_Raster" title="Sun Raster">RAS</a></li>
+<li><a href="/wiki/RGBE_image_format" title="RGBE image format">RBE</a>
+<ul>
+<li><a href="/wiki/JPEG-HDR" title="JPEG-HDR">JPEG-HDR</a></li>
+<li><a href="/wiki/Logluv_TIFF" title="Logluv TIFF">Logluv TIFF</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Silicon_Graphics_Image" title="Silicon Graphics Image">SGI</a></li>
+<li><a href="/wiki/Truevision_TGA" title="Truevision TGA">TGA</a></li>
+<li><a href="/wiki/Tagged_Image_File_Format" class="mw-redirect" title="Tagged Image File Format">TIFF</a>
+<ul>
+<li><a href="/wiki/TIFF/EP" title="TIFF/EP">TIFF/EP</a></li>
+<li><a href="/wiki/Tagged_Image_File_Format#TIFF.2FIT" class="mw-redirect" title="Tagged Image File Format">TIFF/IT</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ulead_PhotoImpact" title="Ulead PhotoImpact">UFO/ UFP</a></li>
+<li><a href="/wiki/Wireless_Application_Protocol_Bitmap_Format" title="Wireless Application Protocol Bitmap Format">WBMP</a></li>
+<li><a href="/wiki/WebP" title="WebP">WebP</a></li>
+<li><a href="/wiki/X_BitMap" title="X BitMap">XBM</a></li>
+<li><a href="/wiki/XCF_(file_format)" title="XCF (file format)">XCF</a></li>
+<li><a href="/wiki/X_PixMap" title="X PixMap">XPM</a></li>
+<li><a href="/wiki/Xwd" title="Xwd">XWD</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Raw_image_format" title="Raw image format">Raw</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Camera_Image_File_Format" title="Camera Image File Format">CIFF</a></li>
+<li><a href="/wiki/Digital_Negative" title="Digital Negative">DNG</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Vector_graphics" title="Vector graphics">Vector</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Adobe_Illustrator_Artwork" title="Adobe Illustrator Artwork">AI</a></li>
+<li><a href="/wiki/CorelDRAW#CDR_file_format" title="CorelDRAW">CDR</a></li>
+<li><a href="/wiki/Computer_Graphics_Metafile" title="Computer Graphics Metafile">CGM</a></li>
+<li><a href="/wiki/AutoCAD_DXF" title="AutoCAD DXF">DXF</a></li>
+<li><a href="/wiki/Extended_Vector_Animation" title="Extended Vector Animation">EVA</a></li>
+<li><a href="/wiki/Windows_Metafile" title="Windows Metafile">EMF</a></li>
+<li><a href="/wiki/Gerber_format" title="Gerber format">Gerber</a></li>
+<li><a href="/wiki/Haiku_Vector_Icon_Format" title="Haiku Vector Icon Format">HVIF</a></li>
+<li><a href="/wiki/IGES" title="IGES">IGES</a></li>
+<li><a href="/wiki/Precision_Graphics_Markup_Language" title="Precision Graphics Markup Language">PGML</a></li>
+<li><a href="/wiki/Scalable_Vector_Graphics" title="Scalable Vector Graphics">SVG</a></li>
+<li><a href="/wiki/Vector_Markup_Language" title="Vector Markup Language">VML</a></li>
+<li><a href="/wiki/Windows_Metafile" title="Windows Metafile">WMF</a></li>
+<li><a href="/wiki/Xar_(graphics)" title="Xar (graphics)">Xar</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Compound</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Computable_Document_Format" title="Computable Document Format">CDF</a></li>
+<li><a href="/wiki/DjVu" title="DjVu">DjVu</a></li>
+<li><a href="/wiki/Encapsulated_PostScript" title="Encapsulated PostScript">EPS</a></li>
+<li><a href="/wiki/Portable_Document_Format" title="Portable Document Format">PDF</a></li>
+<li><a href="/wiki/PICT" title="PICT">PICT</a></li>
+<li><a href="/wiki/PostScript" title="PostScript">PS</a></li>
+<li><a href="/wiki/SWF" title="SWF">SWF</a></li>
+<li><a href="/wiki/Extensible_Application_Markup_Language" title="Extensible Application Markup Language">XAML</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Related</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Exif" title="Exif">Exchangeable image file format (Exif)</a></li>
+<li><a href="/wiki/Extensible_Metadata_Platform" title="Extensible Metadata Platform">Extensible Metadata Platform (XMP)</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<td class="navbox-abovebelow" colspan="2">
+<div>
+<ul>
+<li><b><img alt="Category" src="//upload.wikimedia.org/wikipedia/en/thumb/4/48/Folder_Hexagonal_Icon.svg/16px-Folder_Hexagonal_Icon.svg.png" title="Category" width="16" height="14" srcset="//upload.wikimedia.org/wikipedia/en/thumb/4/48/Folder_Hexagonal_Icon.svg/24px-Folder_Hexagonal_Icon.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/4/48/Folder_Hexagonal_Icon.svg/32px-Folder_Hexagonal_Icon.svg.png 2x" data-file-width="36" data-file-height="31" /> <a href="/wiki/Category:Graphics_file_formats" title="Category:Graphics file formats">Category</a></b></li>
+<li><b><img alt="Non-article page" src="//upload.wikimedia.org/wikipedia/en/thumb/8/89/Symbol_neutral_vote.svg/16px-Symbol_neutral_vote.svg.png" title="Non-article page" width="16" height="16" srcset="//upload.wikimedia.org/wikipedia/en/thumb/8/89/Symbol_neutral_vote.svg/23px-Symbol_neutral_vote.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/8/89/Symbol_neutral_vote.svg/31px-Symbol_neutral_vote.svg.png 2x" data-file-width="180" data-file-height="185" /> <a href="/wiki/Comparison_of_graphics_file_formats" title="Comparison of graphics file formats">Comparison</a></b></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+
+
+<!-- 
+NewPP limit report
+Parsed by mw1250
+Cached time: 20170524050553
+Cache expiry: 2592000
+Dynamic content: false
+CPU time usage: 0.136 seconds
+Real time usage: 0.192 seconds
+Preprocessor visited node count: 816/1000000
+Preprocessor generated node count: 0/1500000
+Post‐expand include size: 39177/2097152 bytes
+Template argument size: 1413/2097152 bytes
+Highest expansion depth: 11/40
+Expensive parser function count: 1/500
+Lua time usage: 0.059/10.000 seconds
+Lua memory usage: 2.73 MB/50 MB
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  152.833      1 -total
+ 34.87%   53.292      1 Template:Reflist
+ 26.05%   39.818      1 Template:Citation_needed
+ 25.71%   39.301      5 Template:Cite_web
+ 24.50%   37.437      1 Template:Infobox_file_format
+ 23.93%   36.567      1 Template:Fix
+ 19.10%   29.194      1 Template:Infobox
+ 14.54%   22.225      2 Template:Category_handler
+ 11.23%   17.156      1 Template:Graphics_file_formats
+  9.41%   14.375      1 Template:Navbox
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:69770-0!*!0!!en!4!* and timestamp 20170524050553 and revision id 779414988
+ -->
+<noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div>					<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=Netpbm_format&amp;oldid=779414988">https://en.wikipedia.org/w/index.php?title=Netpbm_format&amp;oldid=779414988</a>"					</div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:Graphics_file_formats" title="Category:Graphics file formats">Graphics file formats</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden categories: <ul><li><a href="/wiki/Category:CS1_errors:_dates" title="Category:CS1 errors: dates">CS1 errors: dates</a></li><li><a href="/wiki/Category:CS1_maint:_Uses_authors_parameter" title="Category:CS1 maint: Uses authors parameter">CS1 maint: Uses authors parameter</a></li><li><a href="/wiki/Category:All_articles_with_unsourced_statements" title="Category:All articles with unsourced statements">All articles with unsourced statements</a></li><li><a href="/wiki/Category:Articles_with_unsourced_statements_from_February_2014" title="Category:Articles with unsourced statements from February 2014">Articles with unsourced statements from February 2014</a></li></ul></div></div>				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-anonuserpage">Not logged in</li><li id="pt-anontalk"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n">Talk</a></li><li id="pt-anoncontribs"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y">Contributions</a></li><li id="pt-createaccount"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=Netpbm+format" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Netpbm+format" title="You're encouraged to log in; however, it's not mandatory. [o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li  id="ca-nstab-main" class="selected"><span><a href="/wiki/Netpbm_format"  title="View the content page [c]" accesskey="c">Article</a></span></li>
+															<li  id="ca-talk"><span><a href="/wiki/Talk:Netpbm_format"  title="Discussion about the content page [t]" accesskey="t" rel="discussion">Talk</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 id="p-variants-label">
+							<span>Variants</span><a href="#"></a>
+						</h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="/wiki/Netpbm_format" >Read</a></span></li>
+															<li id="ca-edit"><span><a href="/w/index.php?title=Netpbm_format&amp;action=edit"  title="Edit this page [e]" accesskey="e">Edit</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="/w/index.php?title=Netpbm_format&amp;action=history"  title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<h3 id="p-cactions-label"><span>More</span><a href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="/w/index.php" id="searchform">
+							<div id="simpleSearch">
+							<input type="search" name="search" placeholder="Search Wikipedia" title="Search Wikipedia [f]" accesskey="f" id="searchInput"/><input type="hidden" value="Special:Search" name="title"/><input type="submit" name="fulltext" value="Search" title="Search Wikipedia for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton"/>							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="/wiki/Main_Page"  title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id='p-navigation' aria-labelledby='p-navigation-label'>
+			<h3 id='p-navigation-label'>Navigation</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-mainpage-description"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li><li id="n-contents"><a href="/wiki/Portal:Contents" title="Guides to browsing Wikipedia">Contents</a></li><li id="n-featuredcontent"><a href="/wiki/Portal:Featured_content" title="Featured content – the best of Wikipedia">Featured content</a></li><li id="n-currentevents"><a href="/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li><li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random article [x]" accesskey="x">Random article</a></li><li id="n-sitesupport"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us">Donate to Wikipedia</a></li><li id="n-shoplink"><a href="//shop.wikimedia.org" title="Visit the Wikipedia store">Wikipedia store</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-interaction' aria-labelledby='p-interaction-label'>
+			<h3 id='p-interaction-label'>Interaction</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-help"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li><li id="n-aboutsite"><a href="/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li><li id="n-portal"><a href="/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li><li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li><li id="n-contactpage"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia">Contact page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-tb' aria-labelledby='p-tb-label'>
+			<h3 id='p-tb-label'>Tools</h3>
+
+			<div class="body">
+									<ul>
+						<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/Netpbm_format" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/Netpbm_format" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-upload"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u">Upload file</a></li><li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-permalink"><a href="/w/index.php?title=Netpbm_format&amp;oldid=779414988" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="/w/index.php?title=Netpbm_format&amp;action=info" title="More information about this page">Page information</a></li><li id="t-wikibase"><a href="https://www.wikidata.org/wiki/Q17154458" title="Link to connected data repository item [g]" accesskey="g">Wikidata item</a></li><li id="t-cite"><a href="/w/index.php?title=Special:CiteThisPage&amp;page=Netpbm_format&amp;id=779414988" title="Information on how to cite this page">Cite this page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-coll-print_export' aria-labelledby='p-coll-print_export-label'>
+			<h3 id='p-coll-print_export-label'>Print/export</h3>
+
+			<div class="body">
+									<ul>
+						<li id="coll-create_a_book"><a href="/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=Netpbm+format">Create a book</a></li><li id="coll-download-as-rdf2latex"><a href="/w/index.php?title=Special:Book&amp;bookcmd=render_article&amp;arttitle=Netpbm+format&amp;returnto=Netpbm+format&amp;oldid=779414988&amp;writer=rdf2latex">Download as PDF</a></li><li id="t-print"><a href="/w/index.php?title=Netpbm_format&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-lang' aria-labelledby='p-lang-label'>
+			<h3 id='p-lang-label'>Languages</h3>
+
+			<div class="body">
+									<ul>
+						<li class="interlanguage-link interwiki-de"><a href="https://de.wikipedia.org/wiki/Portable_Anymap" title="Portable Anymap – German" lang="de" hreflang="de" class="interlanguage-link-target">Deutsch</a></li><li class="interlanguage-link interwiki-es"><a href="https://es.wikipedia.org/wiki/Formatos_Netpbm" title="Formatos Netpbm – Spanish" lang="es" hreflang="es" class="interlanguage-link-target">Español</a></li><li class="interlanguage-link interwiki-fr"><a href="https://fr.wikipedia.org/wiki/Portable_pixmap" title="Portable pixmap – French" lang="fr" hreflang="fr" class="interlanguage-link-target">Français</a></li><li class="interlanguage-link interwiki-ja"><a href="https://ja.wikipedia.org/wiki/PNM_(%E7%94%BB%E5%83%8F%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88)" title="PNM (画像フォーマット) – Japanese" lang="ja" hreflang="ja" class="interlanguage-link-target">日本語</a></li><li class="interlanguage-link interwiki-pl"><a href="https://pl.wikipedia.org/wiki/Portable_anymap" title="Portable anymap – Polish" lang="pl" hreflang="pl" class="interlanguage-link-target">Polski</a></li><li class="interlanguage-link interwiki-pt"><a href="https://pt.wikipedia.org/wiki/Formato_Netpbm" title="Formato Netpbm – Portuguese" lang="pt" hreflang="pt" class="interlanguage-link-target">Português</a></li><li class="interlanguage-link interwiki-ru"><a href="https://ru.wikipedia.org/wiki/Portable_anymap" title="Portable anymap – Russian" lang="ru" hreflang="ru" class="interlanguage-link-target">Русский</a></li><li class="interlanguage-link interwiki-uk"><a href="https://uk.wikipedia.org/wiki/Portable_anymap" title="Portable anymap – Ukrainian" lang="uk" hreflang="uk" class="interlanguage-link-target">Українська</a></li><li class="interlanguage-link interwiki-zh"><a href="https://zh.wikipedia.org/wiki/PBM%E6%A0%BC%E5%BC%8F" title="PBM格式 – Chinese" lang="zh" hreflang="zh" class="interlanguage-link-target">中文</a></li>					</ul>
+				<div class="after-portlet after-portlet-lang"><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Q17154458#sitelinks-wikipedia" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>			</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last edited on 8 May 2017, at 19:42.</li>
+											<li id="footer-info-copyright">Text is available under the <a rel="license" href="//en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="//wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="//wikimediafoundation.org/wiki/Privacy_policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a href="//www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="https://wikimediafoundation.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+											<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+											<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+											<li id="footer-places-cookiestatement"><a href="https://wikimediafoundation.org/wiki/Cookie_statement">Cookie statement</a></li>
+											<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/w/index.php?title=Netpbm_format&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-copyrightico">
+							<a href="https://wikimediafoundation.org/"><img src="/static/images/wikimedia-button.png" srcset="/static/images/wikimedia-button-1.5x.png 1.5x, /static/images/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation"/></a>						</li>
+											<li id="footer-poweredbyico">
+							<a href="//www.mediawiki.org/"><img src="/static/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/static/images/poweredby_mediawiki_132x47.png 1.5x, /static/images/poweredby_mediawiki_176x62.png 2x" width="88" height="31"/></a>						</li>
+									</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.136","walltime":"0.192","ppvisitednodes":{"value":816,"limit":1000000},"ppgeneratednodes":{"value":0,"limit":1500000},"postexpandincludesize":{"value":39177,"limit":2097152},"templateargumentsize":{"value":1413,"limit":2097152},"expansiondepth":{"value":11,"limit":40},"expensivefunctioncount":{"value":1,"limit":500},"entityaccesscount":{"value":0,"limit":400},"timingprofile":["100.00%  152.833      1 -total"," 34.87%   53.292      1 Template:Reflist"," 26.05%   39.818      1 Template:Citation_needed"," 25.71%   39.301      5 Template:Cite_web"," 24.50%   37.437      1 Template:Infobox_file_format"," 23.93%   36.567      1 Template:Fix"," 19.10%   29.194      1 Template:Infobox"," 14.54%   22.225      2 Template:Category_handler"," 11.23%   17.156      1 Template:Graphics_file_formats","  9.41%   14.375      1 Template:Navbox"]},"scribunto":{"limitreport-timeusage":{"value":"0.059","limit":"10.000"},"limitreport-memusage":{"value":2863478,"limit":52428800}},"cachereport":{"origin":"mw1250","timestamp":"20170524050553","ttl":2592000,"transientcontent":false}}});});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":64,"wgHostname":"mw1242"});});</script>
+	</body>
+</html>
