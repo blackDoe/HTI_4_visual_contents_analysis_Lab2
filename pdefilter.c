@@ -29,14 +29,14 @@ void Sobel(Matrix2D *mat_in, Matrix2D *mat_out)
   xsize_1 = mat_in->xsize - 1; 
   ysize_1 = mat_in->ysize - 1;
 
-  for (j=0; j<mat_in->ysize; j++) {
+  for (j=0; j < mat_in->ysize; j++) {
     // Row index offsets (Neumann conditions)
     n = ((j==0) ? 1 : -1);           
     s = ((j==ysize_1) ? -1 : 1);
     // Pre-compute row indices
     jn = j + n;
     js = j + s;
-    for (i=0 ; i<mat_in->xsize ; i++) {
+    for (i=0 ; i < mat_in->xsize ; i++) {
       // Column index offsets (Neumann)
       w = ((i==0) ? 1 : -1);
       e = ((i==xsize_1) ? -1 : 1); 
@@ -87,10 +87,10 @@ int main(int argc, char *argv[])
     exit(1);
     }
   
-  /* Lecture et allocation mémoire de l'image d'entrée */
+  /* Lecture et allocation mï¿½moire de l'image d'entrï¿½e */
   read_PGM_file(filename_in, &in);
 
-  /* Allocation mémoire de l'image de sortie */
+  /* Allocation mï¿½moire de l'image de sortie */
   alloc_Matrix2D(&out, in.xsize, in.ysize, UCHAR_DATA);
 
   /* Traitement */
@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
   /* Ecriture de l'image de sortie */
   write_PGM_file(filename_out, &out);
 
-  /* Libération de la mémoire */
+  /* Libï¿½ration de la mï¿½moire */
   free_Matrix2D(&in);
   free_Matrix2D(&out);  
 }

@@ -22,8 +22,16 @@ void alloc_Matrix2D(Matrix2D *mat, int xsize, int ysize, int data_type)
   switch(data_type) {
   case DOUBLE_DATA:
     mat->ddata = (double **)malloc(ysize*sizeof(double *));
-    if (mat->ddata == NULL) {
-      fprintf(stderr, "Memoire insuffisante\n");  
+    if (mat->ddata == NULL) {//
+// Created by blackdoe on 6/2/17.
+//
+
+
+      fprintf(stderr, "Memoire insuffisante\n");//
+// Created by blackdoe on 6/2/17.
+//
+
+
       exit(1);
     }
     
@@ -98,7 +106,7 @@ void read_PGM_file(char *filename, Matrix2D *mat)
     exit(1); 
   }
 
-  /* Lecture de l'entête */
+  /* Lecture de l'entï¿½te */
   if ( getc(fp)!='P' || getc(fp)!='5' ) {
     fprintf (stderr, "%s n'est pas au format PGM binaire (P5)\n", filename);
     exit(1) ;
@@ -107,10 +115,10 @@ void read_PGM_file(char *filename, Matrix2D *mat)
   fscanf(fp, "%d %d\n", &xsize, &ysize);
   fscanf(fp, "%d\n", &maxval) ;
 
-  /* Allocation mémoire pour les données */
+  /* Allocation mï¿½moire pour les donnï¿½es */
   alloc_Matrix2D(mat, xsize, ysize, UCHAR_DATA);
 
-  /* Lecture des données */
+  /* Lecture des donnï¿½es */
   for (j=0; j<ysize; j++)
     if (fread ((mat->udata)[j], sizeof(unsigned char), xsize, fp) != xsize ) { 
       fprintf(stderr, "Erreur de lecture du fichier %s\n", filename);  
@@ -133,12 +141,12 @@ void write_PGM_file(char *filename, Matrix2D *mat)
     exit(1); 
   }
   
-  /* Ecriture de l'entête */
+  /* Ecriture de l'entï¿½te */
   fprintf(fp, "P5\n");
   fprintf(fp, "%d %d\n", mat->xsize, mat->ysize);
   fprintf(fp, "255\n");
   
-  /* Ecriture des données */
+  /* Ecriture des donnï¿½es */
   for (j=0; j<mat->ysize; j++)
     if (fwrite(mat->udata[j], sizeof(unsigned char), mat->xsize, fp) != mat->xsize ) { 
       fprintf(stderr, "Erreur d'ecriture du fichier %s\n", filename);  
