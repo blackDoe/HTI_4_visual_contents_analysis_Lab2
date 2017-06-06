@@ -114,6 +114,11 @@ int main(int argc, char *argv[])
     }
 
 
+    dt = argv[2];
+    t = argv[3];
+    g = argv[4];
+    K = argv[5];
+
 
     /* Lecture et allocation m�moire de l'image d'entr�e */
     read_PGM_file(filename_in, &in);
