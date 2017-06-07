@@ -24,25 +24,36 @@ double g2(int x, double K){
 
 /* Description: compute contrast map using Perona Malik filter                */
 
-void Permal(Matrix2D *mat_in, Matrix2D *mat_out, double dt, int t, int g, double K)
+void Permal(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *mat_out, double dt, int t, int g, double K)
 {
-    register int  i, j;
+    register int  i, j, k;
     int           xsize_1, ysize_1;
     int           n, s, w, e;
     int           jn, js, iw, ie;
     double        g1e, g1w, g1n, g1s, sigma1;
     double        g2e, g2w, g2n, g2s, sigma2;
-    double        **in, **out, **tmp;
+    unsigned char **in, **out;
+    double        **ut, **utt, **tmp;
 
 
-    in  = mat_in->ddata;
-    out = mat_out->ddata;
+    in  = mat_in->udata;
+    out = mat_out->udata;
+    ut  = mat_ut->ddata;
+    utt = mat_utt->ddata;
+
 
     // Pre-compute constants
     xsize_1 = mat_in->xsize - 1;
     ysize_1 = mat_in->ysize - 1;
 
-    int k;
+    /* remplissage de ut pour les calculs en double */
+
+    for(j = 0; j < mat_in->ysize; j++)
+        for(i = 0; i < mat_in->xsize; i++)
+            ut[j][i] = (double)(in[j][i]);
+
+    /* boucle principale de Perona-Malik */
+
     for(k = 0; k < t; k++) {
         for (j = 0; j < mat_in->ysize; j++) {
             // Row index offsets (Neumann conditions)
@@ -62,36 +73,43 @@ void Permal(Matrix2D *mat_in, Matrix2D *mat_out, double dt, int t, int g, double
                 // Compute gradient components
                 // - kernel is not normalized to save 1 multiplication
                 if (g == 1) {
-                    g1e = g1(in[j][ie] - in[j][i], K);
-                    g1w = g1(in[j][iw] - in[j][i], K);
-                    g1n = g1(in[js][i] - in[j][i], K);
-                    g1s = g1(in[jn][i] - in[j][i], K);
+                    g1e = g1(ut[j][ie] - ut[j][i], K);
+                    g1w = g1(ut[j][iw] - ut[j][i], K);
+                    g1n = g1(ut[js][i] - ut[j][i], K);
+                    g1s = g1(ut[jn][i] - ut[j][i], K);
                     sigma1 = g1e + g1w + g1n + g1s;
                     // Compute contrast
                     // - kernel normalization is performed here
-                    out[j][i] = (int) (in[j][i] + dt * (g1e * in[j][ie] + g1w * in[j][iw] + g1n * in[jn][i] +
-                                                        g1s * in[js][i] - sigma1));
+                    utt[j][i] = ut[j][i] + dt * (g1e * ut[j][ie] + g1w * ut[j][iw] + g1n * ut[jn][i] +
+                                                        g1s * ut[js][i] - sigma1*ut[j][i]);
                 } else if (g == 2) {
-                    g2e = g2(in[j][ie] - in[j][i], K);
-                    g2w = g2(in[j][iw] - in[j][i], K);
-                    g2n = g2(in[js][i] - in[j][i], K);
-                    g2s = g2(in[jn][i] - in[j][i], K);
+                    g2e = g2(ut[j][ie] - ut[j][i], K);
+                    g2w = g2(ut[j][iw] - ut[j][i], K);
+                    g2n = g2(ut[js][i] - ut[j][i], K);
+                    g2s = g2(ut[jn][i] - ut[j][i], K);
                     sigma2 = g2e + g2w + g2n + g2s;
                     // Compute contrast
                     // - kernel normalization is performed here
-                    out[j][i] = (int) (in[j][i] + dt * (g2e * in[j][ie] + g2w * in[j][iw] + g2n * in[jn][i] +
-                                                        g2s * in[js][i] - sigma2));
+                    utt[j][i] = ut[j][i] + dt * (g2e * ut[j][ie] + g2w * ut[j][iw] + g2n * ut[jn][i] +
+                                                        g2s * ut[js][i] - sigma2*ut[j][i]);
 
                 }
 
             }
         }
 
-        printf("itération = %d, in = %p , out = %p \n", k, in, out);
-        tmp = out;
-        out = in;
-        in = tmp;
+        //printf("itération = %d, ut = %p , utt = %p \n", k, ut, utt);
+        tmp = utt;
+        utt = ut;
+        ut = tmp;
     }
+
+    /* réécriture de la sortie dans out pour l'affichage en image */
+
+    for(j = 0; j < mat_in->ysize; j++)
+        for(i = 0; i < mat_in->xsize; i++)
+            out[j][i] = (int)(ut[j][i]);
+
 }
 
 /*---------------------------------------------------------------------*/
@@ -106,7 +124,7 @@ int main(int argc, char *argv[])
     Matrix2D       in, out;
     Matrix2D       ut, utt;    // buffers qui contiennent les in et out des itérations successives
 
-    // sprintf(filename_out, "resultat.pgm");
+    sprintf(filename_out, "resultat.pgm");
 
 
 
@@ -130,7 +148,8 @@ int main(int argc, char *argv[])
             else if (!strcmp(argv[i], "-o")) {  /* Output file name */
                 if (++i > argc)
                     usage(argv[0]);
-                sprintf(filename_out, "resultat_%f_%d_%d_%f.pgm", dt, t, g, K);
+                //sprintf(filename_out, "resultat_%f_%d_%d_%f.pgm", dt, t, g, K);
+                //printf("filename_out = %")
             }
         } else {
         usage(argv[0]);
@@ -147,22 +166,10 @@ int main(int argc, char *argv[])
     alloc_Matrix2D(&ut, in.xsize, in.ysize, DOUBLE_DATA);
     alloc_Matrix2D(&utt, in.xsize, in.ysize, DOUBLE_DATA);
 
-    /* remplissage de ut pour les calculs en double */
-
-    register int j;
-    for(j = 0; j < in.ysize; j++)
-        for(i = 0; i<in.xsize; i++)
-            (ut->ddata)[j][i] = (double)((in->udata)[j][i]);
 
     /* Traitement */
 
-    Permal(&ut, &utt, dt, t, g, K);
-
-    /* réécriture de la sortie dans out pour l'affichage en image */
-
-    for(j = 0; j < in.ysize; j++)
-        for(i = 0; i<in.xsize; i++)
-            sprintf((out->udata)[j][i], "%f", (ut->ddata)[j][i]);
+    Permal(&ut, &utt, &in, &out, dt, t, g, K);
 
 
     /* Ecriture de l'image de sortie */
