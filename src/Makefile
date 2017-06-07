@@ -17,6 +17,10 @@ TARGET  = ../bin/pdefilter
 SOURCES2 = permal.c utilities.c
 OBJECTS2 = permal.o utilities.o
 TARGET2  = ../bin/permal
+
+SOURCES3 = nordstorm.c utilities.c
+OBJECTS3 = nordstorm.o utilities.o
+TARGET3  = ../bin/nordstorm
 ####### Implicit rules
 
 .SUFFIXES: .c
@@ -26,15 +30,16 @@ TARGET2  = ../bin/permal
 
 ####### Build rules
 
-all: Makefile $(TARGET) $(TARGET2) clean
+all: Makefile $(TARGET) $(TARGET2) $(TARGET3) # clean
 
 $(TARGET): $(OBJECTS)
 	$(LINK) -o $(TARGET) $(OBJECTS) $(LIBS)
 
-
 $(TARGET2): $(OBJECTS2)
 	$(LINK) -o $(TARGET2) $(OBJECTS2) $(LIBS)
 
+$(TARGET3): $(OBJECTS3)
+	$(LINK) -o $(TARGET3) $(OBJECTS3) $(LIBS)
 
 clean:
 	@ rm -f *% *.o core pdefilter resultat.???*

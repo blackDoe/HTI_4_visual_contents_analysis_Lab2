@@ -22,9 +22,10 @@ double g2(int x, double K){
     return 1/(1+(x/K)*(x/K));
 }
 
-/* Description: compute contrast map using Perona Malik filter                */
+/* Description: compute contrast map using Nordstorm filter                */
 
-void Permal(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *mat_out, double dt, int t, int g, double K)
+void Nordstorm(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *mat_out,
+          Matrix2D *mat_ut_0, Matrix2D *mat_in_0, double dt, int t, int g, double K, double lambda)
 {
     register int  i, j, k;
     int           xsize_1, ysize_1;
@@ -32,13 +33,16 @@ void Permal(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *mat
     int           jn, js, iw, ie;
     double        g1e, g1w, g1n, g1s, sigma1;
     double        g2e, g2w, g2n, g2s, sigma2;
-    unsigned char **in, **out;
-    double        **ut, **utt, **tmp;
+    unsigned char **in, **in_0, **out;
+    double        **ut, **ut_0, **utt, **tmp;
 
 
     in  = mat_in->udata;
+    in_0  = mat_in_0->udata;
     out = mat_out->udata;
     ut  = mat_ut->ddata;
+    ut_0  = mat_ut_0->ddata;
+    datalink = lambda * (ut_0 - ut);
     utt = mat_utt->ddata;
 
 
@@ -51,6 +55,7 @@ void Permal(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *mat
     for(j = 0; j < mat_in->ysize; j++)
         for(i = 0; i < mat_in->xsize; i++)
             ut[j][i] = (double)(in[j][i]);
+            ut_0[j][i] = (double)(in_0[j][i]);
 
     /* boucle principale de Perona-Malik */
 
@@ -81,7 +86,7 @@ void Permal(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *mat
                     // Compute contrast
                     // - kernel normalization is performed here
                     utt[j][i] = ut[j][i] + dt * (g1e * ut[j][ie] + g1w * ut[j][iw] + g1n * ut[jn][i] +
-                                                        g1s * ut[js][i] - sigma1*ut[j][i]);
+                                                        g1s * ut[js][i] - sigma1*ut[j][i]) + datalink;
                 } else if (g == 2) {
                     g2e = g2(ut[j][ie] - ut[j][i], K);
                     g2w = g2(ut[j][iw] - ut[j][i], K);
@@ -91,7 +96,7 @@ void Permal(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *mat
                     // Compute contrast
                     // - kernel normalization is performed here
                     utt[j][i] = ut[j][i] + dt * (g2e * ut[j][ie] + g2w * ut[j][iw] + g2n * ut[jn][i] +
-                                                        g2s * ut[js][i] - sigma2*ut[j][i]);
+                                                        g2s * ut[js][i] - sigma2*ut[j][i]) + datalink;
 
                 }
 
@@ -118,13 +123,14 @@ int main(int argc, char *argv[])
 {
     register int   i;
     char           filename_in[256];
+    char           filename_in_0[256];
     char           filename_out[256];
     double         dt, K;
     int            t, g;
-    Matrix2D       in, out;
-    Matrix2D       ut, utt;    // buffers qui contiennent les in et out des itérations successives
+    Matrix2D       in, in_0, out;
+    Matrix2D       ut, ut_0, utt;    // buffers qui contiennent les in et out des itérations successives
 
-    sprintf(filename_out, "resultat.pgm");
+    //sprintf(filename_out, "resultat.pgm");
 
 
 
@@ -132,44 +138,49 @@ int main(int argc, char *argv[])
 
     // printf("argv[3] = %s, argv[4] = %s, argv[5] = %s, argv[6] = %s \n", argv[3], argv[4], argv[5], argv[6]);
 
-    dt = atof(argv[3]);
-    t = atoi(argv[4]);
-    g = atoi(argv[5]);
-    K = atof(argv[6]);
+    dt = atof(argv[4]);
+    t = atoi(argv[5]);
+    g = atoi(argv[6]);
+    K = atof(argv[7]);
 
     /* Decodage des arguments */
-    if (argc == 7)
+    if (argc == 8)
         for (i=1; i< argc; i++) {
             if (!strcmp(argv[i], "-i")) {       /* Input file name */
-                if (++i > argc)
+                if (++i > argc-1)
                     usage(argv[0]);
                 sprintf(filename_in, "%s", argv[i]);
+                sprintf(filename_in_0, "%s", argv[i+1]);
             }
             else if (!strcmp(argv[i], "-o")) {  /* Output file name */
                 if (++i > argc)
                     usage(argv[0]);
                 //sprintf(filename_out, "resultat_%f_%d_%d_%f.pgm", dt, t, g, K);
-                //printf("filename_out = %")
+//   printf("filename_out = %s", filename_out);
             }
         } else {
         usage(argv[0]);
         exit(1);
     }
 
-    printf("dt = %f, t = %d, g = %d, K = %f \n", dt, t, g, K);
+    sprintf(filename_out, "resultat_%f_%d_%d_%f.pgm", dt, t, g, K);
 
+    printf("dt = %f, t = %d, g = %d, K = %f \n", dt, t, g, K);
+////////////////////////////////
     /* Lecture et allocation m�moire de l'image d'entr�e */
     read_PGM_file(filename_in, &in);
+    read_PGM_file(filename_in_0, &in_0);
 
     /* Allocation m�moire de l'image de sortie et des buffer intermédiaires */
     alloc_Matrix2D(&out, in.xsize, in.ysize, UCHAR_DATA);
     alloc_Matrix2D(&ut, in.xsize, in.ysize, DOUBLE_DATA);
+    alloc_Matrix2D(&ut_0, in.xsize, in.ysize, DOUBLE_DATA);
     alloc_Matrix2D(&utt, in.xsize, in.ysize, DOUBLE_DATA);
 
 
     /* Traitement */
 
-    Permal(&ut, &utt, &in, &out, dt, t, g, K);
+    Nordstorm(&ut, &utt, &in, &out, &ut_0, &in_0, dt, t, g, K);
 
 
     /* Ecriture de l'image de sortie */
@@ -177,8 +188,10 @@ int main(int argc, char *argv[])
 
     /* Lib�ration de la m�moire */
     free_Matrix2D(&in);
+    free_Matrix2D(&in_0);
     free_Matrix2D(&out);
     free_Matrix2D(&ut);
+    free_Matrix2D(&ut_0);
     free_Matrix2D(&utt);
 
     return 0;
