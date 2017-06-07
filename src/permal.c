@@ -87,11 +87,10 @@ void Permal(Matrix2D *mat_in, Matrix2D *mat_out, double dt, int t, int g, double
             }
         }
 
-        printf("&in = %p , &out = %p \n", in, out);
+        printf("itération = %d, in = %p , out = %p \n", k, in, out);
         tmp = out;
         out = in;
         in = tmp;
-        printf("nouveaux &in = %p , &out = %p \n", in, out);
     }
 }
 
@@ -148,9 +147,22 @@ int main(int argc, char *argv[])
     alloc_Matrix2D(&ut, in.xsize, in.ysize, DOUBLE_DATA);
     alloc_Matrix2D(&utt, in.xsize, in.ysize, DOUBLE_DATA);
 
+    /* remplissage de ut pour les calculs en double */
+
+    register int j;
+    for(j = 0; j < in.ysize; j++)
+        for(i = 0; i<in.xsize; i++)
+            (ut->ddata)[j][i] = (double)((in->udata)[j][i]);
+
     /* Traitement */
 
     Permal(&ut, &utt, dt, t, g, K);
+
+    /* réécriture de la sortie dans out pour l'affichage en image */
+
+    for(j = 0; j < in.ysize; j++)
+        for(i = 0; i<in.xsize; i++)
+            sprintf((out->udata)[j][i], "%f", (ut->ddata)[j][i]);
 
 
     /* Ecriture de l'image de sortie */
@@ -159,6 +171,8 @@ int main(int argc, char *argv[])
     /* Lib�ration de la m�moire */
     free_Matrix2D(&in);
     free_Matrix2D(&out);
+    free_Matrix2D(&ut);
+    free_Matrix2D(&utt);
 
     return 0;
 }
