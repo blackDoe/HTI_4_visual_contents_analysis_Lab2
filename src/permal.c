@@ -14,11 +14,11 @@
 
 /*---------------------------------------------------------------------*/
 
-double g1(int x, double K){
+double g1(double x, double K){
     return exp(-(x/K)*(x/K));
 }
 
-double g2(int x, double K){
+double g2(double x, double K){
     return 1/(1+(x/K)*(x/K));
 }
 
@@ -66,7 +66,7 @@ void Permal(Matrix2D *mat_in, Matrix2D *mat_out, double dt, double K, int g)
                 sigma1 = g1e + g1w + g1n + g1s;
                 // Compute contrast
                 // - kernel normalization is performed here
-                out[j][i] = (int)(in[j][i]+dt*(g1e*in[j][ie] + g1w*in[j][iw] + g1n*in[jn][i] + g1s*in[js][i] - sigma1));
+                out[j][i] = in[j][i]+dt*(g1e*in[j][ie] + g1w*in[j][iw] + g1n*in[jn][i] + g1s*in[js][i] - sigma1*in[j][i]);
             }
 
             else if(g == 2){
@@ -77,7 +77,7 @@ void Permal(Matrix2D *mat_in, Matrix2D *mat_out, double dt, double K, int g)
                 sigma2 = g2e + g2w + g2n + g2s;
                 // Compute contrast
                 // - kernel normalization is performed here
-                out[j][i] = (int)(in[j][i]+dt*(g2e*in[j][ie] + g2w*in[j][iw] + g2n*in[jn][i] + g2s*in[js][i] - sigma2));
+                out[j][i] = in[j][i]+dt*(g2e*in[j][ie] + g2w*in[j][iw] + g2n*in[jn][i] + g2s*in[js][i] - sigma2*in[j][i]);
             }
         }
     }
@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
     char           filename_out[256];
     double         dt, K;
     int            t, g;
-    Matrix2D       in, out, tmp;
+    Matrix2D       in, out, *tmp;
 
     sprintf(filename_out, "resultat.pgm");
 
@@ -128,17 +128,18 @@ int main(int argc, char *argv[])
     /* Lecture et allocation m�moire de l'image d'entr�e */
     read_PGM_file(filename_in, &in);
 
+
     /* Allocation m�moire de l'image de sortie */
-    alloc_Matrix2D(&out, in.xsize, in.ysize, DOUBLE_DATA);
+    alloc_Matrix2D(&out, in.xsize, in.ysize, UCHAR_DATA);
 
     /* Traitement */
     int k;
     for(k = 0; k < t; k++){
         Permal(&in, &out, dt, K, g);
         printf("&in = %p , &out = %p \n", &in, &out);
-        tmp = out;
-        out = in;
-        in = tmp;
+        tmp = &out;
+        &out = &in;
+        &in = tmp;
         printf("&in = %p , &out = %p \n", &in, &out);
     }
 
@@ -160,7 +161,7 @@ void usage(char *prgnam)
 {
 
     (void) fprintf(stderr, "Usage: %s ", prgnam);
-    fprintf(stderr, "./permal -i \"nomfic.pgm\" dt t g K\n");
+    fprintf(stderr, " -i \"nomfic.pgm\" dt t g K\n");
     fprintf(stderr, "\n");
 }
 
