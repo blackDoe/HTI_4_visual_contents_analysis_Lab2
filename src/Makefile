@@ -22,6 +22,10 @@ SOURCES3 = nordstrom.c utilities.c
 OBJECTS3 = nordstrom.o utilities.o
 TARGET3  = ../bin/nordstrom
 
+SOURCES4 = nordstrom_entropique.c utilities.c
+OBJECTS4 = nordstrom_entropique.o utilities.o
+TARGET4  = ../bin/nordstrom_entropique
+
 ####### Implicit rules
 
 .SUFFIXES: .c
@@ -31,7 +35,7 @@ TARGET3  = ../bin/nordstrom
 
 ####### Build rules
 
-all: Makefile $(TARGET) $(TARGET2) $(TARGET3) # clean
+all: Makefile $(TARGET) $(TARGET2) $(TARGET3) $(TARGET4) # clean
 
 $(TARGET): $(OBJECTS)
 	$(LINK) -o $(TARGET) $(OBJECTS) $(LIBS)
@@ -41,6 +45,9 @@ $(TARGET2): $(OBJECTS2)
 
 $(TARGET3): $(OBJECTS3)
 	$(LINK) -o $(TARGET3) $(OBJECTS3) $(LIBS)
+
+$(TARGET4): $(OBJECTS4)
+	$(LINK) -o $(TARGET4) $(OBJECTS4) $(LIBS)
 
 clean:
 	@ rm -f *% *.o core pdefilter resultat.???*
