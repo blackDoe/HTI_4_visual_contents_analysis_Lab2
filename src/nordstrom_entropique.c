@@ -22,10 +22,10 @@ double g2(int x, double K){
     return 1/(1+(x/K)*(x/K));
 }
 
-/* Description: compute contrast map using Nordstorm filter                */
+/* Description: compute contrast map using Nordstorm entropique filter                */
 
-void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *mat_out,
-          Matrix2D *mat_ut_0, Matrix2D *mat_in_0, double dt, int t, int g, double K, double lambda)
+void Nordstrom_entropique(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *mat_out,
+          Matrix2D *mat_ut_0, Matrix2D *mat_in_0, double dt, int t, int g, double K, double lambda, double mu)
 {
     register int  i, j, k;
     int           xsize_1, ysize_1;
@@ -35,8 +35,7 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
     double        g2e, g2w, g2n, g2s, sigma2;
     unsigned char **in, **in_0, **out;
     double        **ut, **ut_0, **utt, **tmp;
-    double        datalink;
-
+    double        datalink, choc;
 
     in  = mat_in->udata;
     in_0  = mat_in_0->udata;
@@ -60,7 +59,7 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
         }
 
 
-    /* boucle principale de Nordtrom */
+    /* boucle principale de Nordtrom entropique */
 
     for(k = 0; k < t; k++) {
         for (j = 0; j < mat_in->ysize; j++) {
@@ -78,6 +77,20 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
                 iw = i + w;
                 ie = i + e;
 
+                // Laplacian 4-connex. Beware the signs...
+                double de = ut[j][ie] - ut[j][i];
+                double dw = -(ut[j][iw] - ut[j][i]);
+                double dn = ut[js][i] - ut[j][i];
+                double ds = -(ut[jn][i] - ut[j][i]);
+                double laplacien = de - dw + dn - ds;
+
+                if (laplacien > 0)
+                    choc = mu * sqrt(fmin(de,0)*fmin(de,0) + fmax(dw,0)*fmax(dw,0) + fmin(dn,0)*fmin(dn,0) + fmax(ds,0)*fmax(ds,0));
+                else if (laplacien < 0)
+                    choc = -mu * sqrt(fmax(de,0)*fmax(de,0) + fmin(dw,0)*fmin(dw,0) + fmax(dn,0)*fmax(dn,0) + fmin(ds,0)*fmin(ds,0));
+                else
+                    choc = 0;
+
                 // Compute gradient components
                 // - kernel is not normalized to save 1 multiplication
                 if (g == 1) {
@@ -89,7 +102,7 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
                     // Compute contrast
                     // - kernel normalization is performed here
                     utt[j][i] = ut[j][i] + dt * (g1e * ut[j][ie] + g1w * ut[j][iw] + g1n * ut[jn][i] +
-                                                        g1s * ut[js][i] - sigma1*ut[j][i]) + datalink;
+                                                        g1s * ut[js][i] - sigma1*ut[j][i]) + datalink - choc;
                 } else if (g == 2) {
                     g2e = g2(ut[j][ie] - ut[j][i], K);
                     g2w = g2(ut[j][iw] - ut[j][i], K);
@@ -99,7 +112,7 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
                     // Compute contrast
                     // - kernel normalization is performed here
                     utt[j][i] = ut[j][i] + dt * (g2e * ut[j][ie] + g2w * ut[j][iw] + g2n * ut[jn][i] +
-                                                        g2s * ut[js][i] - sigma2*ut[j][i]) + datalink;
+                                                        g2s * ut[js][i] - sigma2*ut[j][i]) + datalink - choc;
 
                 }
 
@@ -128,7 +141,7 @@ int main(int argc, char *argv[])
     char           filename_in[256];
     char           filename_in_0[256];
     char           filename_out[256];
-    double         dt, K, lambda;
+    double         dt, K, lambda, mu;
     int            t, g;
     Matrix2D       in, in_0, out;
     Matrix2D       ut, ut_0, utt;    // buffers qui contiennent les in et out des itérations successives
@@ -146,9 +159,10 @@ int main(int argc, char *argv[])
     g = atoi(argv[6]);
     K = atof(argv[7]);
     lambda = atof(argv[8]);
+    mu = atof(argv[9]);
 
     /* Decodage des arguments */
-    if (argc == 9)
+    if (argc == 10)
         for (i=1; i< argc; i++) {
             if (!strcmp(argv[i], "-i")) {       /* Input file name */
                 if (++i > argc-1)
@@ -167,9 +181,9 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    sprintf(filename_out, "images_nord/resultat_%f_%d_%d_%f_%f.pgm", dt, t, g, K, lambda);
+    sprintf(filename_out, "images_nord_entro/resultat_%f_%d_%d_%f_%f_%f.pgm", dt, t, g, K, lambda, mu);
 
-    printf("dt = %f, t = %d, g = %d, K = %f, lambda = %f \n", dt, t, g, K, lambda);
+    printf("dt = %f, t = %d, g = %d, K = %f, lambda = %f, mu = %f  \n", dt, t, g, K, lambda, mu);
 
 
 ////////////////////////////////
@@ -187,7 +201,7 @@ int main(int argc, char *argv[])
 
     /* Traitement */
 
-    Nordstrom(&ut, &utt, &in, &out, &ut_0, &in_0, dt, t, g, K, lambda);
+    Nordstrom_entropique(&ut, &utt, &in, &out, &ut_0, &in_0, dt, t, g, K, lambda, mu);
 
     /* Ecriture de l'image de sortie */
     write_PGM_file(filename_out, &out);
@@ -210,7 +224,7 @@ void usage(char *prgnam)
 {
 
     (void) fprintf(stderr, "Usage: %s ", prgnam);
-    fprintf(stderr, "./permal -i \"nomfic.pgm\" \"nomfic0.pgm\" dt t g K lambda\n");
+    fprintf(stderr, "./permal -i \"nomfic.pgm\" \"nomfic0.pgm\" dt t g K lambda mu\n");
     fprintf(stderr, "\n");
 }
 
