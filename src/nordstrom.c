@@ -24,7 +24,7 @@ double g2(int x, double K){
 
 /* Description: compute contrast map using Nordstorm filter                */
 
-void Nordstorm(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *mat_out,
+void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *mat_out,
           Matrix2D *mat_ut_0, Matrix2D *mat_in_0, double dt, int t, int g, double K, double lambda)
 {
     register int  i, j, k;
@@ -35,6 +35,7 @@ void Nordstorm(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
     double        g2e, g2w, g2n, g2s, sigma2;
     unsigned char **in, **in_0, **out;
     double        **ut, **ut_0, **utt, **tmp;
+    double        datalink;
 
 
     in  = mat_in->udata;
@@ -50,12 +51,15 @@ void Nordstorm(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
     xsize_1 = mat_in->xsize - 1;
     ysize_1 = mat_in->ysize - 1;
 
+
     /* remplissage de ut pour les calculs en double */
 
     for(j = 0; j < mat_in->ysize; j++)
-        for(i = 0; i < mat_in->xsize; i++)
-            ut[j][i] = (double)(in[j][i]);
-            ut_0[j][i] = (double)(in_0[j][i]);
+        for(i = 0; i < mat_in->xsize; i++) {
+            ut[j][i] = (double) (in[j][i]);
+            ut_0[j][i] = (double) (in_0[j][i]);
+        }
+
 
     /* boucle principale de Perona-Malik */
 
@@ -125,7 +129,7 @@ int main(int argc, char *argv[])
     char           filename_in[256];
     char           filename_in_0[256];
     char           filename_out[256];
-    double         dt, K;
+    double         dt, K, lambda;
     int            t, g;
     Matrix2D       in, in_0, out;
     Matrix2D       ut, ut_0, utt;    // buffers qui contiennent les in et out des itérations successives
@@ -142,9 +146,10 @@ int main(int argc, char *argv[])
     t = atoi(argv[5]);
     g = atoi(argv[6]);
     K = atof(argv[7]);
+    lambda = atof(argv[8]);
 
     /* Decodage des arguments */
-    if (argc == 8)
+    if (argc == 9)
         for (i=1; i< argc; i++) {
             if (!strcmp(argv[i], "-i")) {       /* Input file name */
                 if (++i > argc-1)
@@ -163,13 +168,16 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    sprintf(filename_out, "resultat_%f_%d_%d_%f.pgm", dt, t, g, K);
+    sprintf(filename_out, "images_nord/resultat_%f_%d_%d_%f_%f.pgm", dt, t, g, K, lambda);
 
     printf("dt = %f, t = %d, g = %d, K = %f \n", dt, t, g, K);
+
+
 ////////////////////////////////
     /* Lecture et allocation m�moire de l'image d'entr�e */
     read_PGM_file(filename_in, &in);
     read_PGM_file(filename_in_0, &in_0);
+
 
     /* Allocation m�moire de l'image de sortie et des buffer intermédiaires */
     alloc_Matrix2D(&out, in.xsize, in.ysize, UCHAR_DATA);
@@ -180,8 +188,7 @@ int main(int argc, char *argv[])
 
     /* Traitement */
 
-    Nordstorm(&ut, &utt, &in, &out, &ut_0, &in_0, dt, t, g, K);
-
+    Nordstrom(&ut, &utt, &in, &out, &ut_0, &in_0, dt, t, g, K, lambda);
 
     /* Ecriture de l'image de sortie */
     write_PGM_file(filename_out, &out);
@@ -204,7 +211,7 @@ void usage(char *prgnam)
 {
 
     (void) fprintf(stderr, "Usage: %s ", prgnam);
-    fprintf(stderr, "./permal -i \"nomfic.pgm\" dt t g K\n");
+    fprintf(stderr, "./permal -i \"nomfic.pgm\" \"nomfic0.pgm\" dt t g K lambda\n");
     fprintf(stderr, "\n");
 }
 

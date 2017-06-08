@@ -149,14 +149,14 @@ int main(int argc, char *argv[])
                 if (++i > argc)
                     usage(argv[0]);
                 //sprintf(filename_out, "resultat_%f_%d_%d_%f.pgm", dt, t, g, K);
-                printf("filename_out = %s", filename_out);
+                //printf("filename_out = %s", filename_out);
             }
         } else {
         usage(argv[0]);
         exit(1);
     }
 
-    sprintf(filename_out, "resultat_%f_%d_%d_%f.pgm", dt, t, g, K);
+    sprintf(filename_out, "images_permal/resultat_%f_%d_%d_%f.pgm", dt, t, g, K);
 
     printf("dt = %f, t = %d, g = %d, K = %f \n", dt, t, g, K);
 

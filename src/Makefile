@@ -18,9 +18,10 @@ SOURCES2 = permal.c utilities.c
 OBJECTS2 = permal.o utilities.o
 TARGET2  = ../bin/permal
 
-SOURCES3 = nordstorm.c utilities.c
-OBJECTS3 = nordstorm.o utilities.o
-TARGET3  = ../bin/nordstorm
+SOURCES3 = nordstrom.c utilities.c
+OBJECTS3 = nordstrom.o utilities.o
+TARGET3  = ../bin/nordstrom
+
 ####### Implicit rules
 
 .SUFFIXES: .c
