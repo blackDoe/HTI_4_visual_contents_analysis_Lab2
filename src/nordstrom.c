@@ -35,7 +35,7 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
     double        g2e, g2w, g2n, g2s, sigma2;
     unsigned char **in, **in_0, **out;
     double        **ut, **ut_0, **utt, **tmp;
-    double        **datalink;
+
 
 
     in  = mat_in->udata;
@@ -56,14 +56,14 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
         for (i = 0; i < mat_in->xsize; i++) {
             ut[j][i] = (double) (in[j][i]);
             ut_0[j][i] = (double) (in_0[j][i]);
-            printf("avant datalink\n");
-            datalink[j][i] = lambda * (ut_0[j][i] - ut[j][i]);
+            //printf("avant datalink\n");
+            //datalink[j][i] = 0;
         }
-        printf("ut[j][2] = %f \nut_0[j][2] = %f\ndatalink = %f\n\n", ut[j][2], ut_0[j][2], datalink[j][2]);
+        //printf("ut[j][2] = %f \nut_0[j][2] = %f\n", ut[j][2], ut_0[j][2]);
     }
 
 
-    /* boucle principale de Nordtrom */
+    /* boucle principale de Nordstrom */
 
     for(k = 0; k < t; k++) {
         for (j = 0; j < mat_in->ysize; j++) {
@@ -81,6 +81,8 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
                 iw = i + w;
                 ie = i + e;
 
+                //datalink[j][i] = lambda * (ut_0[j][i] - ut[j][i]);
+
                 // Compute gradient components
                 // - kernel is not normalized to save 1 multiplication
                 if (g == 1) {
@@ -92,7 +94,9 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
                     // Compute contrast
                     // - kernel normalization is performed here
                     utt[j][i] = ut[j][i] + dt * (g1e * ut[j][ie] + g1w * ut[j][iw] + g1n * ut[jn][i] + g1s * ut[js][i]
-                                                 - sigma1*ut[j][i]) + datalink[j][i];
+                                                 - sigma1*ut[j][i]);
+
+                    //printf("utt[j][i] = %f \n", utt[j][i]);
                 } else if (g == 2) {
                     g2e = g2(ut[j][ie] - ut[j][i], K);
                     g2w = g2(ut[j][iw] - ut[j][i], K);
@@ -102,7 +106,7 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
                     // Compute contrast
                     // - kernel normalization is performed here
                     utt[j][i] = ut[j][i] + dt * (g2e * ut[j][ie] + g2w * ut[j][iw] + g2n * ut[jn][i] + g2s * ut[js][i]
-                                                 - sigma2*ut[j][i]) + datalink[j][i];
+                                                 - sigma2*ut[j][i]);
 
                 }
 
@@ -113,13 +117,16 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
         tmp = utt;
         utt = ut;
         ut = tmp;
+
     }
 
     /* réécriture de la sortie dans out pour l'affichage en image */
 
     for(j = 0; j < mat_in->ysize; j++)
-        for(i = 0; i < mat_in->xsize; i++)
-            out[j][i] = (int)(ut[j][i]);
+        for(i = 0; i < mat_in->xsize; i++) {
+            out[j][i] = (int) (ut[j][i] + lambda * (ut_0[j][i] - utt[j][i]));
+            printf("out[j][i] = %d \n", out[j][i]);
+        }
 
 }
 
