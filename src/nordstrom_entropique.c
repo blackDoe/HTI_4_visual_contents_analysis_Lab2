@@ -35,14 +35,13 @@ void Nordstrom_entropique(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in,
     double        g2e, g2w, g2n, g2s, sigma2;
     unsigned char **in, **in_0, **out;
     double        **ut, **ut_0, **utt, **tmp;
-    double        datalink, choc;
+    double        choc;
 
     in  = mat_in->udata;
     in_0  = mat_in_0->udata;
     out = mat_out->udata;
     ut  = mat_ut->ddata;
     ut_0  = mat_ut_0->ddata;
-    datalink = lambda * (ut_0 - ut);
     utt = mat_utt->ddata;
 
 
@@ -102,7 +101,8 @@ void Nordstrom_entropique(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in,
                     // Compute contrast
                     // - kernel normalization is performed here
                     utt[j][i] = ut[j][i] + dt * (g1e * ut[j][ie] + g1w * ut[j][iw] + g1n * ut[jn][i] +
-                                                        g1s * ut[js][i] - sigma1*ut[j][i]) + datalink - choc;
+                                                        g1s * ut[js][i] - sigma1*ut[j][i])
+                                + lambda * (ut_0[j][i] - ut[j][i]) - choc;
                 } else if (g == 2) {
                     g2e = g2(ut[j][ie] - ut[j][i], K);
                     g2w = g2(ut[j][iw] - ut[j][i], K);
@@ -112,7 +112,8 @@ void Nordstrom_entropique(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in,
                     // Compute contrast
                     // - kernel normalization is performed here
                     utt[j][i] = ut[j][i] + dt * (g2e * ut[j][ie] + g2w * ut[j][iw] + g2n * ut[jn][i] +
-                                                        g2s * ut[js][i] - sigma2*ut[j][i]) + datalink - choc;
+                                                        g2s * ut[js][i] - sigma2*ut[j][i])
+                                + lambda * (ut_0[j][i] - ut[j][i]) - choc;
 
                 }
 

@@ -35,7 +35,6 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
     double        g2e, g2w, g2n, g2s, sigma2;
     unsigned char **in, **in_0, **out;
     double        **ut, **ut_0, **utt, **tmp;
-    double        datalink;
 
 
     in  = mat_in->udata;
@@ -43,7 +42,6 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
     out = mat_out->udata;
     ut  = mat_ut->ddata;
     ut_0  = mat_ut_0->ddata;
-    datalink = lambda * (ut_0 - ut);
     utt = mat_utt->ddata;
 
 
@@ -88,8 +86,8 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
                     sigma1 = g1e + g1w + g1n + g1s;
                     // Compute contrast
                     // - kernel normalization is performed here
-                    utt[j][i] = ut[j][i] + dt * (g1e * ut[j][ie] + g1w * ut[j][iw] + g1n * ut[jn][i] +
-                                                        g1s * ut[js][i] - sigma1*ut[j][i]) + datalink;
+                    utt[j][i] = ut[j][i] + dt * (g1e * ut[j][ie] + g1w * ut[j][iw] + g1n * ut[jn][i] + g1s * ut[js][i]
+                                                 - sigma1*ut[j][i]) + lambda * (ut_0[j][i] - ut[j][i]);
                 } else if (g == 2) {
                     g2e = g2(ut[j][ie] - ut[j][i], K);
                     g2w = g2(ut[j][iw] - ut[j][i], K);
@@ -98,8 +96,8 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
                     sigma2 = g2e + g2w + g2n + g2s;
                     // Compute contrast
                     // - kernel normalization is performed here
-                    utt[j][i] = ut[j][i] + dt * (g2e * ut[j][ie] + g2w * ut[j][iw] + g2n * ut[jn][i] +
-                                                        g2s * ut[js][i] - sigma2*ut[j][i]) + datalink;
+                    utt[j][i] = ut[j][i] + dt * (g2e * ut[j][ie] + g2w * ut[j][iw] + g2n * ut[jn][i] + g2s * ut[js][i]
+                                                 - sigma2*ut[j][i]) + lambda * (ut_0[j][i] - ut[j][i]);
 
                 }
 
