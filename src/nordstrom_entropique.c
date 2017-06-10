@@ -35,7 +35,7 @@ void Nordstrom_entropique(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in,
     double        g2e, g2w, g2n, g2s, sigma2;
     unsigned char **in, **in_0, **out;
     double        **ut, **ut_0, **utt, **tmp;
-    double        choc;
+    //double        **choc;
 
     in  = mat_in->udata;
     in_0  = mat_in_0->udata;
@@ -76,20 +76,6 @@ void Nordstrom_entropique(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in,
                 iw = i + w;
                 ie = i + e;
 
-                // Laplacian 4-connex. Beware the signs...
-                double de = ut[j][ie] - ut[j][i];
-                double dw = -(ut[j][iw] - ut[j][i]);
-                double dn = ut[js][i] - ut[j][i];
-                double ds = -(ut[jn][i] - ut[j][i]);
-                double laplacien = de - dw + dn - ds;
-
-                if (laplacien > 0)
-                    choc = mu * sqrt(fmin(de,0)*fmin(de,0) + fmax(dw,0)*fmax(dw,0) + fmin(dn,0)*fmin(dn,0) + fmax(ds,0)*fmax(ds,0));
-                else if (laplacien < 0)
-                    choc = -mu * sqrt(fmax(de,0)*fmax(de,0) + fmin(dw,0)*fmin(dw,0) + fmax(dn,0)*fmax(dn,0) + fmin(ds,0)*fmin(ds,0));
-                else
-                    choc = 0;
-
                 // Compute gradient components
                 // - kernel is not normalized to save 1 multiplication
                 if (g == 1) {
@@ -124,12 +110,31 @@ void Nordstrom_entropique(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in,
         ut = tmp;
     }
 
+
+
     /* réécriture de la sortie dans out pour l'affichage en image */
 
     for(j = 0; j < mat_in->ysize; j++)
-        for(i = 0; i < mat_in->xsize; i++)
-            out[j][i] = (int)(ut[j][i] + lambda * (ut_0[j][i] - ut[j][i]) - choc);
+        for(i = 0; i < mat_in->xsize; i++) {
+            // Laplacian 4-connex. Beware the signs...
+            double de = ut[j][ie] - ut[j][i];
+            double dw = -(ut[j][iw] - ut[j][i]);
+            double dn = ut[js][i] - ut[j][i];
+            double ds = -(ut[jn][i] - ut[j][i]);
+            double laplacien = de - dw + dn - ds;
 
+            if (laplacien > 0)
+                out[j][i] = (int) (ut[j][i] + lambda * (ut_0[j][i] - ut[j][i])
+                                   - (mu * sqrt(fmin(de,0)*fmin(de,0) + fmax(dw,0)*fmax(dw,0) + fmin(dn,0)*fmin(dn,0) + fmax(ds,0)*fmax(ds,0))));
+            else if (laplacien < 0)
+                out[j][i] = (int) (ut[j][i] + lambda * (ut_0[j][i] - ut[j][i])
+                                   - (-mu * sqrt(fmax(de,0)*fmax(de,0) + fmin(dw,0)*fmin(dw,0) + fmax(dn,0)*fmax(dn,0) + fmin(ds,0)*fmin(ds,0))));
+            else
+                out[j][i] = (int) (ut[j][i] + lambda * (ut_0[j][i] - ut[j][i]));
+
+
+           // out[j][i] = (int) (ut[j][i] + lambda * (ut_0[j][i] - ut[j][i]) - choc[j][i]);
+        }
 }
 
 /*---------------------------------------------------------------------*/

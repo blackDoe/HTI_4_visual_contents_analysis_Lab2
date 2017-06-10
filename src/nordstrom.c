@@ -125,7 +125,7 @@ void Nordstrom(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in, Matrix2D *
     for(j = 0; j < mat_in->ysize; j++)
         for(i = 0; i < mat_in->xsize; i++) {
             out[j][i] = (int) (ut[j][i] + lambda * (ut_0[j][i] - utt[j][i]));
-            printf("out[j][i] = %d \n", out[j][i]);
+            //printf("out[%d][%d] = %d \n", j, i, out[j][i]);
         }
 
 }
