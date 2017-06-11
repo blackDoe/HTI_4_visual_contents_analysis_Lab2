@@ -117,23 +117,23 @@ void Nordstrom_entropique(Matrix2D *mat_ut, Matrix2D *mat_utt, Matrix2D *mat_in,
     for(j = 0; j < mat_in->ysize; j++)
         for(i = 0; i < mat_in->xsize; i++) {
             // Laplacian 4-connex. Beware the signs...
-            double de = ut[j][ie] - ut[j][i];
-            double dw = -(ut[j][iw] - ut[j][i]);
-            double dn = ut[js][i] - ut[j][i];
-            double ds = -(ut[jn][i] - ut[j][i]);
+            double de = utt[j][ie] - utt[j][i];
+            double dw = -(utt[j][iw] - utt[j][i]);
+            double dn = utt[js][i] - utt[j][i];
+            double ds = -(utt[jn][i] - utt[j][i]);
             double laplacien = de - dw + dn - ds;
 
             if (laplacien > 0)
-                out[j][i] = (int) (ut[j][i] + lambda * (ut_0[j][i] - ut[j][i])
+                out[j][i] = (int) (ut[j][i] + lambda * (ut_0[j][i] - utt[j][i])
                                    - (mu * sqrt(fmin(de,0)*fmin(de,0) + fmax(dw,0)*fmax(dw,0) + fmin(dn,0)*fmin(dn,0) + fmax(ds,0)*fmax(ds,0))));
             else if (laplacien < 0)
-                out[j][i] = (int) (ut[j][i] + lambda * (ut_0[j][i] - ut[j][i])
+                out[j][i] = (int) (ut[j][i] + lambda * (ut_0[j][i] - utt[j][i])
                                    - (-mu * sqrt(fmax(de,0)*fmax(de,0) + fmin(dw,0)*fmin(dw,0) + fmax(dn,0)*fmax(dn,0) + fmin(ds,0)*fmin(ds,0))));
             else
-                out[j][i] = (int) (ut[j][i] + lambda * (ut_0[j][i] - ut[j][i]));
+                out[j][i] = (int) (ut[j][i] + lambda * (ut_0[j][i] - utt[j][i]));
 
 
-           // out[j][i] = (int) (ut[j][i] + lambda * (ut_0[j][i] - ut[j][i]) - choc[j][i]);
+           // out[j][i] = (int) (ut[j][i] + lambda * (ut_0[j][i] - utt[j][i]) - choc[j][i]);
         }
 }
 
@@ -191,7 +191,7 @@ int main(int argc, char *argv[])
 
 
 ////////////////////////////////
-    /* Lecture et allocation m�moire de l'image d'entr�e */
+    /* Lecture et allocation m�moire de l'image d'entrée */
     read_PGM_file(filename_in, &in);
     read_PGM_file(filename_in_0, &in_0);
 
