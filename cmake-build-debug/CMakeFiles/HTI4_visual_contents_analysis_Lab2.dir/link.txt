@@ -1,1 +1,0 @@
-/usr/bin/cc  -g   CMakeFiles/HTI4_visual_contents_analysis_Lab2.dir/pdefilter.c.o CMakeFiles/HTI4_visual_contents_analysis_Lab2.dir/permal.c.o CMakeFiles/HTI4_visual_contents_analysis_Lab2.dir/utilities.c.o  -o HTI4_visual_contents_analysis_Lab2 

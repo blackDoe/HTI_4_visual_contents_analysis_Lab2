@@ -1,3 +1,0 @@
-/media/loicw/STOCK/STOCK/TSP/2A/HTI/git/HTI4_visual_contents_analysis_Lab2/cmake-build-debug/CMakeFiles/edit_cache.dir
-/media/loicw/STOCK/STOCK/TSP/2A/HTI/git/HTI4_visual_contents_analysis_Lab2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/media/loicw/STOCK/STOCK/TSP/2A/HTI/git/HTI4_visual_contents_analysis_Lab2/cmake-build-debug/CMakeFiles/HTI4_visual_contents_analysis_Lab2.dir
